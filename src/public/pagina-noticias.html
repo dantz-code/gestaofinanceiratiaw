@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Notícias</title>
+  <link href="/css/stylenotícias.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+
+  <!-- Conteúdo de notícias -->
+  <h1>Últimas Notícias</h1>
+  <div id="noticias-container" class="grid-noticias"></div>
+
+
+  <!-- Seção de Favoritos (inicialmente escondida) -->
+  <section id="favoritos-section" style="display: none;">
+    <h2>Notícias Favoritas</h2>
+    <div id="favoritos-container" class="grid-noticias"></div>
+  </section>
+
+
+
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <h2 id="modal-titulo"></h2>
+      <img id="modal-imagem" src="" alt="">
+      <p id="modal-conteudo"></p>
+    </div>
+  </div>
+
+  </div>
+  <footer>
+    <div class="rodape" id="rodape">
+      <div class="logotipo">
+        <a href="index.html">
+          <img src="/img/imgs-bernardo/logomelhorada.png" alt="Logotipo">
+        </a>
+      </div>
+
+      <div class="containerborder">
+        <p><strong>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</strong></p>
+        <div class="redes-sociais">
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram da +Grana"><i
+              class="fab fa-instagram"></i>+Grana</a>
+          <a href="https://linkedin.com" target="_blank" aria-label="linkedin da +Grana"><i
+              class="fab fa-linkedin-in"></i>+Grana</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Script para carregar JS -->
+
+
+  <script src="js/scriptnoticias.js"></script>
+  <script>
+    // Menu de navegação (hambúrguer)
+    function toggleMenu() {
+      const menu = document.getElementById("menuDropdown");
+      menu.classList.toggle("show");
+    }
+
+    // Menu do usuário (ícone de pessoa)
+    function toggleUserMenu() {
+      const menu = document.getElementById('userDropdown');
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Fecha o dropdown de usuário se clicar fora
+    window.addEventListener('click', function (e) {
+      if (!e.target.matches('.fa-user')) {
+        const dropdown = document.getElementById('userDropdown');
+        if (dropdown && dropdown.style.display === 'block') {
+          dropdown.style.display = 'none';
+        }
+      }
+    });
+
+    // Fecha o dropdown do menu hambúrguer se clicar fora
+    document.addEventListener("click", function (event) {
+      const dropdown = document.getElementById("menuDropdown");
+      const menuIcon = document.querySelector(".fa-bars");
+
+      if (!dropdown.contains(event.target) && !menuIcon.contains(event.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  </script>
+
+  <script src="js/user.js"></script>
+
+
+</body>
+
+</html>

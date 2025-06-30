@@ -1,0 +1,655 @@
+:root {
+  --verde-claro: #42E619;
+  --verde-medio: #319B02;
+  --verde-escuro: #034C1C;
+  --azul-escuro: #0A1A37;
+  --cinza-claro: #f5f5f5;
+}
+
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  color: var(--azul-escuro);
+  line-height: 1.6;
+}
+
+/* Header */
+.navbar {
+  background-color: #0a1a37;
+  width: 100%;
+  border-bottom: 8px solid #42e619;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo img {
+  width: 250px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.pages {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.menuHide {
+  display: none;
+}
+
+.pages li a {
+  display: block;
+  text-decoration: none;
+  color: #e7f5e9;
+  font-weight: bold;
+  font-size: 1.8rem;
+  padding: 10px 10px;
+  transition: all 0.3s ease;
+}
+
+.pages li a:hover {
+  background-color: #42e619;
+  color: #0a1a37;
+  border-radius: 5px;
+}
+
+/* Menu de usuário e ícone de menu alinhados à direita */
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Ícone de menu (hambúrguer) */
+.fas.fa-bars {
+  font-size: 2.3rem;
+  color: #e7f5e9;
+  cursor: pointer;
+  display: block;
+  margin-right: 10px;
+  font-size: 30px;
+  height: 25px;
+}
+
+.fas.fa-bars:hover {
+  color: #42e619;
+}
+
+/*Dropdown do Menu*/
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  background-color: #fff;
+  list-style: none;
+  box-shadow: #42e619;
+  border-radius: 6px;
+  padding: 10px 10px;
+  width: 150px;
+  z-index: 1000;
+}
+
+.menu-dropdown li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.menu-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+}
+
+.menu-dropdown li a:hover {
+  background-color: #42e619;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.menu-dropdown.show {
+  display: block;
+}
+
+/* Menu de usuário */
+.usuario-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.usuario-menu .fa-user {
+  font-size: 1.5rem;
+  color: #4fe42a;
+  padding: 20px;
+  font-size: 30px;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 70px;
+  background-color: #fff;
+  list-style: none;
+  box-shadow: #42e619;
+  border-radius: 6px;
+  padding: 10px 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.user-dropdown li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.user-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+}
+
+.user-dropdown li a:hover {
+  background-color: #42e619;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .pages {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #e7f5e9;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .pages.show {
+    display: flex;
+  }
+
+  .menuHide {
+    display: flex;
+  }
+}
+
+/* Conteúdo principal */
+.conteudo {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Introdução */
+.intro h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Simulação */
+.simulacao {
+  margin: 2rem 0;
+}
+
+.card-simulacao {
+  background-color: white;
+  border-left: 5px solid var(--verde-medio);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-simulacao h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card-simulacao ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.card-simulacao li {
+  margin-bottom: 0.4rem;
+}
+
+/* Formulário */
+.formulario {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.formulario h2 {
+  margin-bottom: 1rem;
+}
+
+.formulario form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.formulario input,
+.formulario select,
+.formulario button {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.formulario input,
+.formulario select {
+  flex: 1 1 180px;
+}
+
+.formulario button {
+  background-color: var(--verde-medio);
+  color: #0a1a36;
+  border: #0a1a36 2px solid;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.formulario button:hover {
+  color: #e6f4e8;
+  background-color: #0a1a36;
+}
+
+.mensagem {
+  margin-top: 0.8rem;
+  color: var(--verde-escuro);
+  font-weight: bold;
+}
+
+/* Tabela */
+.tabela-section {
+  margin-bottom: 3rem;
+}
+
+.tabela-section h2 {
+  margin-bottom: 0.8rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #0a1a37;
+  padding: 0.8rem;
+  text-align: left;
+  color: #e7f5e9;
+}
+
+td {
+  padding: 0.6rem;
+  border-top: 1px solid #ddd;
+}
+
+td .acoes button {
+  background-color: var(--azul-escuro);
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+td .acoes button:hover {
+  background-color: var(--verde-escuro);
+}
+
+/* Rodapé */
+.rodape {
+  background-color: var(--azul-escuro);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .formulario form {
+    flex-direction: column;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.botao-grafico {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.botao-grafico button {
+  color: #0a1a36;
+  border: #0a1a36 2px solid;
+  background-color: #fff;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.botao-grafico button:hover {
+  color: #e6f4e8;
+  background-color: #0a1a36;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .formulario form {
+    flex-direction: column;
+  }
+
+  .formulario input,
+  .formulario select,
+  .formulario button {
+    width: 100%;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--azul-escuro);
+  }
+}
+
+#geg {
+  background-color: var(--verde-claro);
+  color: #000000;
+  border-radius: px;
+  text-align: center;
+  font-style: italic;
+}
+
+#tdr {
+  background-color: #0a1a37;
+  display: flex;
+  flex-direction: column;
+  position: center;
+  text-align: center;
+
+  height: 50px;
+  color: #ccc;
+  padding-top: 10px;
+
+}
+
+#tdr:hover {
+  color: green;
+  /* cor quando o mouse passa */
+}
+
+/* Menu suspenso escondido por padrão */
+.dropdown-menu-custom {
+  position: absolute;
+  top: 120px;
+  right: 50px;
+  background-color: #e7f5e9;
+  border: 2px solid #42e619;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 999;
+  width: 180px;
+}
+
+/* Lista do menu suspenso */
+.dropdown-menu-custom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu-custom ul li {
+  margin-bottom: 10px;
+}
+
+.dropdown-menu-custom ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  padding: 5px 10px;
+  display: block;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu-custom ul li a:hover {
+  background-color: #42e619;
+  color: white;
+}
+
+/* Classe utilitária para esconder */
+.esconder {
+  display: none !important;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 768px) {
+
+  /* Oculta o menu horizontal e mantém o botão hambúrguer */
+  .navbar .links {
+    display: none;
+  }
+
+  .icone-hamburguer {
+    display: block;
+  }
+
+  /* Ajusta padding do conteúdo para caber abaixo do menu fixo */
+  .conteudo {
+    margin-inline: 1rem;
+  }
+
+  /* Formulário em coluna */
+  .formulario form {
+    flex-direction: column;
+  }
+
+  .formulario input,
+  .formulario select,
+  .formulario button {
+    width: 100%;
+  }
+
+  /* Tabela adaptada para mobile */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--azul-escuro);
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  /* Gráfico ajustado */
+  .grafico-section canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Footer */
+.rodape {
+  background-color: #0a1a37;
+  margin-top: 40px;
+  border-top: 8px solid #42e619;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logotipo img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.containerborder {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.containerborder p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  color: #e7f5e9;
+}
+
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.redes-sociais a {
+  color: #e7f5e9;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.redes-sociais a:hover {
+  color: #42e619;
+}
+#grafico-gastos {
+  max-width: 400px;
+  max-height: 400px;
+  margin: 0 auto;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Financeiro</title>
+  <link rel="stylesheet" href="css/gastostabela.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+  <!--Navbar-->
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+  <!--Navbar-->
+
+  <main class="conteudo">
+    <section class="intro">
+      <h2>Controle seus gastos!</h2>
+      <p>Para termos um bom <strong>controle financeiro</strong>, um dos primeiros passos é entendermos quais são os
+        nossos gastos. Só assim conseguimos nos organizar e planejar o futuro com mais segurança.</p>
+      <p>Nossa ferramenta vai te ajudar a <strong>cadastrar e visualizar seus gastos</strong> de forma simples e rápida.
+      </p>
+      <p>Abaixo você confere um exemplo de como preencher os dados:</p>
+    </section>
+
+    <section class="simulacao">
+      <div class="card-simulacao">
+        <h3>Simulação - Daniel Meireles</h3>
+        <ul>
+          <li><strong>Objetivo:</strong> Economizar e se organizar melhor</li>
+          <li><strong>Salário:</strong> R$ 3.760,00</li>
+          <li><strong>Gasto fixo - Aluguel:</strong> R$ 1.250,00</li>
+          <li><strong>Gasto variável - Lazer:</strong> R$ 300,00</li>
+          <li><strong>Gasto obrigatório - Transporte:</strong> R$ 200,00</li>
+          <li><strong>Data de referência:</strong> Maio/2025</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="formulario">
+      <h2>Cadastre seus gastos</h2>
+      <form id="form-gasto">
+        <input type="text" id="descricao" placeholder="Descrição" required>
+        <input type="text" id="categoria" placeholder="Categoria (ex: Lazer)" required>
+        <select id="tipo" required>
+          <option value="">Tipo</option>
+          <option value="Fixo">Fixo</option>
+          <option value="Variável">Variável</option>
+          <option value="Obrigatório">Obrigatório</option>
+        </select>
+        <input type="number" id="valor" placeholder="Valor (R$)" step="0.01" min="0" required>
+        <input type="date" id="data" required>
+
+
+
+
+        <button type="submit">Adicionar gasto</button>
+      </form>
+      <p id="mensagem-feedback" class="mensagem"></p>
+    </section>
+
+    <section class="tabela-section">
+      <h2>Gastos Cadastrados</h2>
+      <table id="tabela-gastos">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </section>
+    <section class="botao-grafico">
+      <button type="button" onclick="gerarGrafico()">📊 Gerar Gráfico</button>
+    </section>
+
+
+    <section class="grafico-section" style="margin-top:2rem;">
+      <canvas id="grafico-gastos"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <div class="rodape" id="rodape">
+      <div class="logotipo">
+        <a href="index.html">
+          <img src="/img/imgs-bernardo/logomelhorada.png" alt="Logotipo">
+        </a>
+      </div>
+
+      <div class="containerborder">
+        <p><strong>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</strong>
+        </p>
+        <div class="redes-sociais">
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram da +Grana"><i
+              class="fab fa-instagram"></i>+Grana</a>
+          <a href="https://linkedin.com" target="_blank" aria-label="linkedin da +Grana"><i
+              class="fab fa-linkedin-in"></i>+Grana</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/gastostabela.js"></script>
+
+  <script>
+    const menuBtn = document.getElementById("hamburguerMenu");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    menuBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      dropdown.classList.toggle("esconder");
+    });
+
+    // Fecha o dropdown ao clicar fora dele
+    window.addEventListener("click", function (e) {
+      if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add("esconder");
+      }
+    });
+  </script>
+</body>
+
+</html>

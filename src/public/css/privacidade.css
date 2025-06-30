@@ -1,0 +1,306 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.navbar {
+    background-color: #0a1a37;
+    width: 100%;
+    border-bottom: 8px solid #42e619;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo img {
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex: 1;
+}
+
+.menuHide {
+    display: none;
+}
+
+.pages li a {
+    display: block;
+    text-decoration: none;
+    color: #e7f5e9;
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding: 10px 10px;
+    transition: all 0.3s ease;
+}
+
+.pages li a:hover {
+    background-color: #42e619;
+    color: #0a1a37;
+    border-radius: 5px;
+}
+
+/* Menu de usuário e ícone de menu alinhados à direita */
+.right-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Ícone de menu (hambúrguer) */
+.fas.fa-bars {
+    font-size: 2.3rem;
+    color: #e7f5e9;
+    cursor: pointer;
+    display: block;
+    margin-right: 10px;
+    font-size: 30px;
+    height: 25px;
+}
+
+.fas.fa-bars:hover {
+    color: #42e619;
+}
+
+/*Dropdown do Menu*/
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 100px;
+    background-color: #fff;
+    list-style: none;
+    box-shadow: #42e619;
+    border-radius: 6px;
+    padding: 10px 10px;
+    width: 150px;
+    z-index: 1000;
+}
+
+.menu-dropdown li {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.menu-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.menu-dropdown li a:hover {
+    background-color: #42e619;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.menu-dropdown.show {
+    display: block;
+}
+
+/* Menu de usuário */
+.usuario-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.usuario-menu .fa-user {
+    font-size: 1.5rem;
+    color: #4fe42a;
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    background-color: #fff;
+    list-style: none;
+    box-shadow: #42e619;
+    border-radius: 6px;
+    padding: 10px 0;
+    width: 150px;
+    z-index: 1000;
+}
+
+.user-dropdown li {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.user-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.user-dropdown li a:hover {
+    background-color: #42e619;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .pages {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #e7f5e9;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .pages.show {
+        display: flex;
+    }
+
+    .menuHide {
+        display: flex;
+    }
+}
+
+/* Header Fim */
+/* ----- Conteúdo principal da página ----- */
+.container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* ----- Formulário ----- */
+form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #34495e;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #0a1a37;
+    box-shadow: 0 0 5px #0a1a37;
+}
+
+/* ----- Botão ----- */
+form button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    color: #0a1a36;
+    border: #0a1a36 2px solid;
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    color: #e6f4e8;
+    background-color: #0a1a36;
+}
+
+/* ----- Responsivo ----- */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* Footer */
+.rodape {
+    background-color: #0a1a37;
+    margin-top: 40px;
+    border-top: 8px solid #42e619;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logotipo img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.containerborder {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.containerborder p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #e7f5e9;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.redes-sociais a {
+    color: #e7f5e9;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.redes-sociais a:hover {
+    color: #42e619;
+}
+
+/* Footer Fim */

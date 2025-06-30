@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte - Grana</title>
+    <link rel="stylesheet" href="css/tutorial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos para a nova seção de mensagens (opcional, mas recomendado) */
+        .messages-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .messages-container h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        #messages-list {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            min-height: 100px;
+        }
+
+        .message-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 10px;
+        }
+
+        .message-item:last-child {
+            border-bottom: none;
+        }
+
+        .message-item p {
+            margin: 0;
+            color: #333;
+            word-wrap: break-word;
+        }
+
+        .message-item .timestamp {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="header-line"></div>
+    <main>
+        <div class="card">
+            <h2 class="card-title">Converse conosco</h2>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Sua mensagem" id="message-input"></textarea>
+            </div>
+            <button class="btn-send" id="send-message-btn">Enviar mensagem</button>
+        </div>
+        <div id="success-message"
+            style="display: none; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; width: fit-content; margin-left: auto; margin-right: auto;">
+            Mensagem enviada com sucesso!
+        </div>
+        <section class="faq-section">
+            <h2>Perguntas Frequentes Sobre o Uso do Site</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como faço para pesquisar uma notícia específica? <span class="arrow">▼</span></h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para pesquisar por notícias, clique no <strong>menu</strong> (ícone com três linhas no canto
+                            superior direito) e selecione a opção <strong>"Pesquisa"</strong>.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como faço para conferir os meus dados no site? <span class="arrow">▼</span></h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Acesse sua conta clicando no <strong>ícone de perfil</strong> no canto superior direito.
+                            Dentro da sua área de usuário, navegue até a opção <strong>"Privacidade"</strong> para
+                            conferir seus dados.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como posso ver ou adicionar meus gastos? <span class="arrow">▼</span></h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Clique no <strong>menu</strong> (ícone com três linhas no canto superior direito) para abrir
+                            as opções. Em seguida, selecione <strong>"Gastos"</strong> para visualizar ou adicionar
+                            novas despesas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como posso adicionar minhas metas? <span class="arrow">▼</span></h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para adicionar suas metas, abra o <strong>menu</strong> (ícone com três linhas no canto
+                            superior direito) e clique na opção <strong>"Metas"</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="logotipo">
+            <img src="img/imgs-bernardo/logomelhorada.png" alt="Logo Grana Footer" />
+        </div>
+        <div class="containerborder">
+            <p>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</p>
+            <div class="redes-sociais">
+                <a href="#"><i class="fab fa-instagram"></i> +Grana</a>
+                <a href="#"><i class="fab fa-linkedin"></i> +Grana</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/user.js"></script>
+    <script>
+        // --- FUNÇÃO PARA CARREGAR E EXIBIR AS MENSAGENS ---
+        function loadMessages() {
+            const messagesListDiv = document.getElementById('messages-list');
+            if (!messagesListDiv) return;
+
+            fetch('http://localhost:3000/messages')
+                .then(response => response.json())
+                .then(messages => {
+                    messagesListDiv.innerHTML = '';
+                    if (messages.length === 0) {
+                        messagesListDiv.innerHTML = '<p>Nenhuma mensagem recebida ainda.</p>';
+                        return;
+                    }
+                    messages.sort((a, b) => new Date(b.receivedAt) - new Date(a.receivedAt));
+                    messages.forEach(msg => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = 'message-item';
+
+                        // Exibe o nome do autor (ou 'Anônimo') junto com a mensagem
+                        messageElement.innerHTML = `
+                        <p><strong>${msg.author || 'Anônimo'}:</strong> ${msg.text}</p> 
+                        <div class="timestamp">${new Date(msg.receivedAt).toLocaleString('pt-BR')}</div>
+                    `; // <<< ALTERAÇÃO AQUI
+
+                        messagesListDiv.appendChild(messageElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar mensagens:', error);
+                    messagesListDiv.innerHTML = '<p style="color: red;">Erro ao carregar as mensagens. Verifique se o json-server está rodando.</p>';
+                });
+        }
+
+        // --- GARANTE QUE O DOM ESTÁ TOTALMENTE CARREGADO ANTES DE EXECUTAR O SCRIPT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const sendMessageBtn = document.getElementById('send-message-btn');
+            const messageInput = document.getElementById('message-input');
+            const successMessageDiv = document.getElementById('success-message');
+
+            // LÓGICA DO BOTÃO DE ENVIAR MENSAGEM
+            if (sendMessageBtn) {
+                sendMessageBtn.addEventListener('click', () => {
+                    const messageText = messageInput.value.trim();
+                    if (messageText === '') {
+                        alert("Por favor, digite sua mensagem antes de enviar.");
+                        return;
+                    }
+
+                    // Pega o usuário logado do localStorage
+                    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado")); // <<< ALTERAÇÃO AQUI
+                    const nomeDoAutor = usuarioLogado ? usuarioLogado.nome : "Anônimo"; // <<< ALTERAÇÃO AQUI
+
+                    sendMessageBtn.disabled = true;
+                    sendMessageBtn.textContent = 'Enviando...';
+
+                    // Cria o objeto da mensagem com o autor
+                    const newMessage = { // <<< ALTERAÇÃO AQUI
+                        text: messageText,
+                        receivedAt: new Date().toISOString(),
+                        author: nomeDoAutor
+                    };
+
+                    fetch('http://localhost:3000/messages', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newMessage), // Envia o objeto completo
+                    })
+                        .then(response => {
+                            if (!response.ok) throw new Error('A resposta do servidor não foi OK');
+                            return response.json();
+                        })
+                        .then(() => {
+                            messageInput.value = '';
+                            successMessageDiv.style.display = 'block';
+                            loadMessages();
+                            setTimeout(() => successMessageDiv.style.display = 'none', 3000);
+                        })
+                        .catch(error => {
+                            console.error('Erro ao enviar mensagem:', error);
+                            alert('Ocorreu um erro ao conectar com o servidor.');
+                        })
+                        .finally(() => {
+                            sendMessageBtn.disabled = false;
+                            sendMessageBtn.textContent = 'Enviar mensagem';
+                        });
+                });
+            }
+
+            // LÓGICA DO FAQ
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', () => {
+                    const faqItem = item.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+                });
+            });
+
+            // CARREGAMENTO INICIAL DAS MENSAGENS
+            loadMessages();
+        });
+    </script>
+</body>
+
+</html>

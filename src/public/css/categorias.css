@@ -1,0 +1,766 @@
+/* Importação de fontes (mantendo Montserrat como você indicou) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Usando Montserrat como você indicou */
+    color: #333;
+    /* Cor padrão para textos */
+    line-height: 1.6;
+}
+
+/* --- NavBar (Baseado no seu último CSS enviado) --- */
+.navbar {
+    background-color: #0a1a37;
+    width: 100%;
+    border-bottom: 8px solid #42e619;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo img {
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex: 1;
+}
+
+.menuHide {
+    display: none;
+}
+
+.pages li a {
+    display: block;
+    text-decoration: none;
+    color: #e7f5e9;
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding: 10px 10px;
+    transition: all 0.3s ease;
+}
+
+.pages li a:hover {
+    background-color: #42e619;
+    color: #0a1a37;
+    border-radius: 5px;
+}
+
+/* Menu de usuário e ícone de menu alinhados à direita */
+.right-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Ícone de menu (hambúrguer) */
+.fas.fa-bars {
+    font-size: 2.3rem;
+    color: #e7f5e9;
+    cursor: pointer;
+    display: block;
+    margin-right: 10px;
+    font-size: 30px;
+    height: 25px;
+}
+
+.fas.fa-bars:hover {
+    color: #42e619;
+}
+
+/*Dropdown do Menu*/
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 100px;
+    background-color: #fff;
+    list-style: none;
+    box-shadow: #42e619;
+    border-radius: 6px;
+    padding: 10px 10px;
+    width: 150px;
+    z-index: 1000;
+}
+
+.menu-dropdown li {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.menu-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.menu-dropdown li a:hover {
+    background-color: #42e619;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.menu-dropdown.show {
+    display: block;
+}
+
+/* Menu de usuário */
+.usuario-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.usuario-menu .fa-user {
+    font-size: 1.5rem;
+    color: #4fe42a;
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    background-color: #fff;
+    list-style: none;
+    box-shadow: #42e619;
+    border-radius: 6px;
+    padding: 10px 0;
+    width: 150px;
+    z-index: 1000;
+}
+
+.user-dropdown li {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.user-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.user-dropdown li a:hover {
+    background-color: #42e619;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .pages {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #e7f5e9;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .pages.show {
+        display: flex;
+    }
+
+    .menuHide {
+        display: flex;
+    }
+}
+
+/* --- Conteúdo Principal (Mantido do CSS anterior com ajustes leves) --- */
+.app-container {
+    display: flex;
+    max-width: 1200px;
+    /* Mantém a largura máxima do container central */
+    margin: 25px auto 0;
+    /* Ajustei a margem superior para se alinhar com o .pagina */
+    gap: 30px;
+    padding: 0 20px;
+    /* Padding nas laterais */
+}
+
+/* Adaptação das classes para o nome que você usou no seu HTML */
+/* Se você ainda estiver usando .pagina, .containerleft, .containerright */
+/* Assegure-se de que essas classes estão onde deveriam estar */
+/* Se não, o .app-container será o container principal */
+
+.categorias-coluna {
+    width: 280px;
+    /* Mantido como no meu CSS anterior para boa largura */
+    background: #ffffff;
+    /* Fundo branco para os cards/colunas */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.categorias-coluna h2 {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+    color: black;
+    /* Texto preto */
+}
+
+.lista-categorias {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.categoria-link {
+    display: block;
+    padding: 10px 8px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-size: 1.05rem;
+}
+
+.categoria-link:hover {
+    background-color: #42e619;
+    color: white;
+    /* Hover verde com texto branco */
+}
+
+.conteudos-coluna {
+    flex: 1;
+    background: #ffffff;
+    /* Fundo branco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.conteudos-coluna h1 {
+    font-size: 1.8rem;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#searchInput {
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+    font-size: 1rem;
+    outline: none;
+}
+
+#searchBtn {
+    width: 60px;
+    color: #0a1a36;
+    border: #0a1a36 2px solid;
+    background-color: #fff;
+    /* Botão de busca preto */
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.2s;
+}
+
+#searchBtn:hover {
+    color: #e6f4e8;
+    background-color: #0a1a36;
+    /* Hover verde */
+}
+
+.botaoLerMais {
+    color: #0a1a36 !important;
+    border: #0a1a36 2px solid !important;
+    background-color: #fff !important;
+}
+
+.botaoLerMais:hover {
+    color: #e6f4e8 !important;
+    background-color: #0a1a36 !important;
+}
+
+#titulo-categoria-selecionada {
+    font-size: 1.6rem;
+    color: black;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.card-conteudo {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-conteudo h3 {
+    margin-top: 0;
+    color: black;
+    font-size: 1.25rem;
+}
+
+.card-conteudo p {
+    color: #555;
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.card-conteudo small {
+    display: block;
+    color: #777;
+    margin: 5px 0 10px;
+    font-size: 0.85rem;
+}
+
+.card-conteudo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.card-conteudo button {
+    background: black;
+    /* Botão de ler mais preto */
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: auto;
+    align-self: flex-start;
+    transition: background 0.2s;
+    font-size: 1rem;
+}
+
+.card-conteudo button:hover {
+    background: #42e619;
+    /* Hover verde */
+}
+
+/* --- Detalhes do Conteúdo --- */
+.detalhes-conteudo {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detalhes-conteudo button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.detalhes-conteudo button:hover {
+    background: #e0e0e0;
+    color: black;
+}
+
+.detalhes-conteudo h2 {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.detalhes-conteudo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.detalhes-conteudo .conteudo-texto {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.detalhes-conteudo .conteudo-texto p {
+    margin-bottom: 1em;
+}
+
+.detalhes-conteudo .conteudo-texto h1,
+.detalhes-conteudo .conteudo-texto h2 {
+    color: black;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+/* --- Carousel (mantido do seu CSS enviado) --- */
+.carrossel-container {
+    position: relative;
+    width: 450px;
+    height: 300px;
+    overflow: hidden;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.carrossel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.favorito-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: #565454;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.favorito-btn i.fa-solid {
+    color: #2db10f;
+}
+
+
+/* --- Footer (Baseado no seu último CSS enviado) --- */
+.rodape {
+    background-color: #0a1a37;
+    margin-top: 40px;
+    border-top: 8px solid #42e619;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logotipo img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.containerborder {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.containerborder p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #e7f5e9;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.redes-sociais a {
+    color: #e7f5e9;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.redes-sociais a:hover {
+    color: #42e619;
+}
+
+/* --- Outras seções do seu CSS (containers, info-investimento) --- */
+/* Note: As classes .pagina, .containerleft, .containerright não foram encontradas no seu HTML de categorias.html enviado anteriormente.
+   Se estas classes forem para uma *outra* página (ex: index.html), elas deveriam estar em um CSS separado para essa página,
+   ou você precisaria adicionar essas estruturas ao seu categorias.html para que esses estilos se apliquem.
+   Estou mantendo-as aqui no CSS consolidado caso você precise delas em alguma página. */
+.pagina {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-right: 30px;
+    margin-left: 30px;
+    gap: 5px;
+}
+
+.containerleft,
+.containerright {
+    background-color: #e7f5e9;
+    padding: 20px;
+}
+
+.containerleft {
+    width: 730px;
+    border-right: 5px solid #42e619;
+}
+
+.containerright {
+    width: 530px;
+}
+
+.containerleft h2 {
+    padding-bottom: 10px;
+    padding-top: 20px;
+    color: black;
+}
+
+.containerleft h3 {
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.containerright h2 {
+    padding-bottom: 10px;
+    text-align: center;
+    color: black;
+}
+
+.containerright h3 {
+    color: black;
+    padding-top: 25px;
+    font-size: 1.2rem;
+}
+
+.containerright h4 {
+    color: black;
+    padding-top: 15px;
+    font-size: 1.2rem;
+}
+
+.containerleft p,
+.containerright p {
+    text-align: justify;
+    margin-top: 5px;
+    color: black;
+}
+
+.info-investimento {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    /* animation: fadeIn 0.5s ease-in-out; - Removendo animação que não foi definida */
+}
+
+.info-investimento h3 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.info-investimento p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+/* --- Responsividade Geral --- */
+@media (max-width: 1024px) {
+    .app-container {
+        /* Esta classe é para a página de categorias */
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .categorias-coluna,
+    .conteudos-coluna {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Adaptação para as classes .pagina, .containerleft, .containerright se estiverem em uso */
+    .pagina {
+        flex-direction: column;
+        margin: 20px;
+        gap: 20px;
+    }
+
+    .containerleft,
+    .containerright {
+        width: 100%;
+    }
+
+    .carrossel-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .slide {
+        height: auto;
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+    }
+
+    .prev,
+    .next {
+        display: none;
+    }
+
+    .info-investimento {
+        padding: 15px;
+    }
+
+    .info-investimento h3 {
+        font-size: 1.4rem;
+    }
+
+    .info-investimento p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        width: 180px;
+        height: auto;
+    }
+
+    .pages li a {
+        font-size: 1.5rem;
+    }
+
+    .rodape {
+        /* Ajuste do footer para mobile */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logotipo img {
+        width: 220px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .redes-sociais {
+        gap: 15px;
+    }
+
+    .containerborder p {
+        font-size: 1rem;
+    }
+
+    .info-investimento {
+        margin-top: 20px;
+    }
+
+    /* Estilos do app-container já foram definidos acima */
+}
+
+@media (max-width: 480px) {
+    .pages li a {
+        font-size: 1.2rem;
+        padding: 8px 5px;
+    }
+
+    .containerleft h3,
+    .containerright h3,
+    .containerright h4 {
+        font-size: 1rem;
+    }
+
+    .containerleft p,
+    .containerright p {
+        font-size: 0.95rem;
+    }
+
+    .carrossel-container {
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .redes-sociais a {
+        font-size: 1.3em;
+    }
+}

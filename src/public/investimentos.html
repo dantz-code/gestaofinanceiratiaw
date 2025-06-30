@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/investimentos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>Investimentos</title>
+</head>
+
+<body>
+  <!--Navbar-->
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+  <!--Navbar-->
+
+  <!--Seção de Informações-->
+  <section>
+    <div class="pagina">
+      <div class="containerleft">
+        <h3>O que são investimentos e por que investir?</h3>
+        <p>&nbspInvestimentos são formas de aplicar o seu dinheiro com o objetivo de obter ganhos no futuro. Em
+          vez de deixar o dinheiro parado na conta corrente, investir significa colocá-lo para “trabalhar” por
+          você, fazendo com que ele cresça com o tempo.</p>
+        <h2>Tipos de investimentos</h2>
+        <p>&nbspOs investimentos podem ser classificados em duas grandes categorias: renda fixa e renda
+          variável.<br>
+          <strong>Renda Fixa:</strong> São aplicações com regras de rentabilidade previsíveis. É como
+          emprestar dinheiro para bancos, empresas ou o governo, que devolvem o valor com juros. Exemplos:
+          poupança, Tesouro Direto, CDB, LCI e LCA. São indicados para quem busca segurança.<br>
+          <strong>Renda Variável:</strong> Nesse tipo de investimento, não há garantia de retorno. Os lucros
+          podem ser maiores, mas os riscos também. Exemplos: ações, fundos imobiliários, criptomoedas. São
+          mais indicados para quem aceita oscilações e tem um perfil mais arrojado.
+        </p>
+        <h2>Por que começar a investir?</h2>
+        <p><strong>Proteger seu dinheiro da inflação</strong> – A inflação corrói o poder de compra. Investindo,
+          você pode preservar (ou aumentar) seu patrimônio.<br>
+          <strong>Alcançar objetivos financeiros</strong> – Comprar uma casa, viajar, fazer uma reserva de
+          emergência ou se aposentar com conforto.<br>
+          <strong>Independência financeira</strong> – Com disciplina e estratégia, é possível viver de renda
+          no futuro.
+        </p>
+        <h2>Como começar?</h2>
+        <p><strong>Organize suas finanças</strong> – Quite dívidas, tenha controle dos gastos e monte uma
+          reserva de emergência.<br>
+          <strong>Conheça seu perfil de investidor</strong> – Conservador, moderado ou arrojado? Isso define
+          quais produtos são mais adequados.<br>
+          <strong>Estude os produtos financeiros</strong> – Entenda como cada investimento funciona e quais os
+          riscos envolvidos.<br>
+          <strong>Use uma corretora confiável</strong> – Existem diversas plataformas online que oferecem
+          acesso a investimentos com taxas reduzidas ou até isentas.
+        </p>
+      </div>
+      <div class="containerright">
+        <h2>Melhores investimentos</h2>
+        <div id="investimentos-container"></div>
+
+        <!--Carrossel-->
+        <div class="carrossel-container">
+          <div class="carrossel" id="carrossel-dinamico">
+            <!-- Slides vão ser gerados aqui via JS -->
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+        </div>
+        <!--Fim do Carrossel-->
+        <div id="resumo-investimento" class="resumo-investimento"></div>
+      </div>
+    </div>
+  </section>
+  <!--Fim das informações-->
+
+  <footer>
+    <div class="rodape" id="rodape">
+      <div class="logotipo">
+        <a href="index.html">
+          <img src="/img/imgs-bernardo/logomelhorada.png" alt="Logotipo">
+        </a>
+      </div>
+
+      <div class="containerborder">
+        <p><strong>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</strong>
+        </p>
+        <div class="redes-sociais">
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram da +Grana"><i
+              class="fab fa-instagram"></i>+Grana</a>
+          <a href="https://linkedin.com" target="_blank" aria-label="linkedin da +Grana"><i
+              class="fab fa-linkedin-in"></i>+Grana</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/user.js"></script>
+  <script src="js/investimentos.js"></script>
+  <script>
+    const menuBtn = document.getElementById("hamburguerMenu");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    menuBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      dropdown.classList.toggle("esconder");
+    });
+
+    // Fecha o dropdown ao clicar fora dele
+    window.addEventListener("click", function (e) {
+      if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add("esconder");
+      }
+    });
+  </script>
+</body>
+
+</html>

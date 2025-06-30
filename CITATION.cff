@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: +Grana Gestão Financeira
+authors:
+  - family-names: Maia Lomas Ameno
+    given-names: Bernardo 
+  - family-names: Meireles Aquino Jorge
+    given-names: Daniel
+  - family-names: Rodrigues Diniz
+    given-names: Danton
+  - family-names: Batista Carneiro
+    given-names: João Victor  
+  - family-names: Alves Amaral
+    given-names: João Vitor 
+  - family-names: Vieira Guedes
+    given-names: João Vitor 
+  - name-suffix: Jardell Fillipe da Silva
+    affiliation: PUC Minas
+    family-names: da Silva
+    given-names: Jardell Fillipe
+    affiliation: PUC Minas    
+keywords:
+    - Finanças
+    - Educação
+    - Economia
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2024-09-01

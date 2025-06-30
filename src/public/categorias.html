@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquise Aqui</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!--Navbar-->
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--Navbar-->
+
+    <div class="app-container">
+        <div class="categorias-coluna">
+            <h2>Categorias</h2>
+            <ul class="lista-categorias" id="listaCategorias">
+            </ul>
+        </div>
+        <div class="conteudos-coluna">
+            <h1>Pesquisar</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Digite o nome do conteúdo">
+                <button id="searchBtn">🔍</button>
+            </div>
+
+            <h2 id="titulo-categoria-selecionada">Todos os Conteúdos</h2>
+            <div id="resultados-conteudo">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="rodape" id="rodape">
+            <div class="logotipo">
+                <a href="index.html">
+                    <img src="/img/imgs-bernardo/logomelhorada.png" alt="Logotipo">
+                </a>
+            </div>
+
+            <div class="containerborder">
+                <p><strong>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</strong>
+                </p>
+                <div class="redes-sociais">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram da +Grana"><i
+                            class="fab fa-instagram"></i>+Grana</a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="linkedin da +Grana"><i
+                            class="fab fa-linkedin-in"></i>+Grana</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let dadosExternos;
+        let conteudos = [];
+
+        // --- Funções JavaScript ---
+
+        function formatarNomeCategoria(categoria) {
+            if (categoria === 'noticias') {
+                return 'Notícias';
+            }
+            return categoria.charAt(0).toUpperCase() + categoria.slice(1);
+        }
+
+        function carregarConteudos(categoria = null) {
+            const resultadosDiv = document.getElementById("resultados-conteudo");
+            const tituloCategoria = document.getElementById("titulo-categoria-selecionada");
+
+            let conteudosFiltrados = conteudos;
+            if (categoria && categoria !== "todos") {
+                conteudosFiltrados = conteudos.filter(item => item.categoria === categoria);
+            }
+
+            tituloCategoria.textContent = (categoria && categoria !== "todos")
+                ? `Conteúdos: ${formatarNomeCategoria(categoria)}`
+                : "Todos os Conteúdos";
+
+            resultadosDiv.innerHTML = "";
+
+            if (conteudosFiltrados.length === 0) {
+                resultadosDiv.innerHTML = "<p>Nenhum conteúdo encontrado nesta categoria.</p>";
+                return;
+            }
+
+            conteudosFiltrados.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card-conteudo";
+                card.innerHTML = `
+                    <h3>${item.titulo}</h3>
+                    <p>${item.descricao}</p>
+                    <small>Categoria: ${formatarNomeCategoria(item.categoria)}</small>
+                    ${item.banner ? `<img src="${item.banner.startsWith('img/') ? '../' + item.banner : item.banner}" alt="${item.descricao}" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 4px;">` : ''}
+                    <button class="botaoLerMais" onclick="mostrarDetalhes(${item.id}, '${item.categoria}')">Ler mais</button>
+                `;
+                resultadosDiv.appendChild(card);
+            });
+        }
+
+        function mostrarDetalhes(id, categoriaOriginal) {
+            const conteudo = conteudos.find(c => c.id == id && c.categoria == categoriaOriginal);
+            const resultadosDiv = document.getElementById("resultados-conteudo");
+
+            if (!conteudo) {
+                resultadosDiv.innerHTML = "<p>Conteúdo não encontrado.</p>";
+                return;
+            }
+
+            // CORREÇÃO APLICADA AQUI: troquei 'item.banner' por 'conteudo.banner'
+            resultadosDiv.innerHTML = `
+                <div class="detalhes-conteudo">
+                    <button onclick="voltarParaLista('${categoriaOriginal}')">← Voltar</button>
+                    <h2>${conteudo.titulo}</h2>
+                    ${conteudo.banner ? `<img src="${conteudo.banner.startsWith('img/') ? '../' + conteudo.banner : conteudo.banner}" alt="${conteudo.descricao}" style="max-width: 100%; height: auto; margin-bottom: 15px; border-radius: 8px;">` : ''}
+                    <div class="conteudo-texto">${conteudo.conteudoCompleto}</div>
+                    ${conteudo.autor ? `<p><strong>Autor:</strong> ${conteudo.autor}</p>` : ''}
+                    ${conteudo.data ? `<p><strong>Data:</strong> ${conteudo.data}</p>` : ''}
+                </div>
+            `;
+        }
+
+        function voltarParaLista(categoria) {
+            document.getElementById("searchInput").value = "";
+            carregarConteudos(categoria);
+        }
+
+        function carregarCategorias() {
+            const listaCategoriasUl = document.getElementById("listaCategorias");
+            listaCategoriasUl.innerHTML = '';
+
+            const liTodos = document.createElement("li");
+            const linkTodos = document.createElement("a");
+            linkTodos.href = "#";
+            linkTodos.className = "categoria-link";
+            linkTodos.textContent = "Todos os Conteúdos";
+            linkTodos.dataset.categoria = "todos";
+            liTodos.appendChild(linkTodos);
+            listaCategoriasUl.appendChild(liTodos);
+
+            const categoriasUnicas = Object.keys(dadosExternos);
+
+            categoriasUnicas.forEach(categoriaChave => {
+                const li = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = "#";
+                link.className = "categoria-link";
+                link.textContent = formatarNomeCategoria(categoriaChave);
+                link.dataset.categoria = categoriaChave;
+
+                li.appendChild(link);
+                listaCategoriasUl.appendChild(li);
+            });
+
+            document.querySelectorAll('.categoria-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const categoria = e.target.dataset.categoria;
+                    document.getElementById("searchInput").value = "";
+                    if (categoria === "todos") {
+                        carregarConteudos();
+                    } else {
+                        carregarConteudos(categoria);
+                    }
+                });
+            });
+        }
+
+        // Event Listeners para a busca
+        document.getElementById("searchBtn").addEventListener("click", function () {
+            const termo = document.getElementById("searchInput").value.toLowerCase();
+            const tituloCategoria = document.getElementById("titulo-categoria-selecionada");
+
+            if (!termo) {
+                carregarConteudos();
+                return;
+            }
+
+            const resultados = conteudos.filter(item =>
+                item.titulo.toLowerCase().includes(termo) ||
+                item.descricao.toLowerCase().includes(termo) ||
+                item.conteudoCompleto.toLowerCase().includes(termo)
+            );
+
+            const resultadosDiv = document.getElementById("resultados-conteudo");
+            resultadosDiv.innerHTML = "";
+
+            if (resultados.length === 0) {
+                resultadosDiv.innerHTML = "<p>Nenhum resultado encontrado para '" + termo + "'.</p>";
+                tituloCategoria.textContent = `Resultados da Busca por: "${termo}"`;
+                return;
+            }
+
+            tituloCategoria.textContent = `Resultados da Busca por: "${termo}"`;
+
+            resultados.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card-conteudo";
+                card.innerHTML = `
+                    <h3>${item.titulo}</h3>
+                    <p>${item.descricao}</p>
+                    <small>Categoria: ${formatarNomeCategoria(item.categoria)}</small>
+                    ${item.banner ? `<img src="${item.banner.startsWith('img/') ? '../' + item.banner : item.banner}" alt="${item.descricao}" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 4px;">` : ''}
+                    <button onclick="mostrarDetalhes(${item.id}, '${item.categoria}')">Ler mais</button>
+                `;
+                resultadosDiv.appendChild(card);
+            });
+        });
+
+        document.getElementById("searchInput").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                document.getElementById("searchBtn").click();
+            }
+        });
+
+
+        // --- FUNÇÃO CRÍTICA: Buscar TODOS os dados do JSON Server por Coleção ---
+        async function fetchAllDataFromJSONServer() {
+            const categoriasDoJSON = ['educacao', 'noticias', 'investimento'];
+            const allFetchedData = {};
+
+            for (const categoria of categoriasDoJSON) {
+                try {
+                    // Esta é a URL que DEVE apontar para o JSON Server!
+                    const response = await fetch(`http://localhost:3000/${categoria}`);
+                    if (!response.ok) {
+                        console.warn(`Aviso: Não foi possível carregar a categoria ${categoria} do JSON Server. Status: ${response.status} ${response.statusText}`);
+                        continue;
+                    }
+                    allFetchedData[categoria] = await response.json();
+                } catch (error) {
+                    console.error(`Erro ao carregar a categoria ${categoria} do JSON Server:`, error);
+                }
+            }
+            return allFetchedData;
+        }
+
+        // --- Função de Inicialização Principal ---
+        async function init() {
+            try {
+                dadosExternos = await fetchAllDataFromJSONServer();
+
+                if (!dadosExternos || Object.keys(dadosExternos).length === 0) {
+                    throw new Error("Nenhum dado foi carregado do JSON Server. Verifique o servidor JSON.");
+                }
+
+                conteudos = [];
+                for (const categoria in dadosExternos) {
+                    if (dadosExternos.hasOwnProperty(categoria)) {
+                        dadosExternos[categoria].forEach(item => {
+                            conteudos.push({
+                                id: item.id,
+                                titulo: item.titulo,
+                                categoria: item.categoria || categoria,
+                                descricao: item.resumo || "",
+                                conteudoCompleto: item.texto || item.conteudo || "",
+                                banner: item.banner || item.imagem || "",
+                                autor: item.autor || "",
+                                data: item.data || ""
+                            });
+                        });
+                    }
+                }
+
+                carregarCategorias();
+                carregarConteudos();
+
+            } catch (error) {
+                console.error("Erro fatal ao inicializar a página (JS):", error);
+                document.getElementById("resultados-conteudo").innerHTML = "<p>Ocorreu um erro crítico ao carregar os conteúdos. Por favor, verifique se o JSON Server está rodando corretamente e se há conexão.</p>";
+            }
+        }
+
+        // --- Inicia o processo de carregamento dos dados e a renderização da página ---
+        init();
+    </script>
+    <script>
+        // Observação: Este trecho de código para o menu dropdown parece ter alguns problemas.
+        // As funções toggleMenu() e toggleUserMenu() não estão definidas e os IDs usados no script
+        // não correspondem exatamente aos do HTML. Recomendo revisar esta parte.
+        
+        // Exemplo de como a função toggleMenu poderia ser:
+        function toggleMenu() {
+            const dropdown = document.getElementById("menuDropdown");
+            dropdown.classList.toggle("esconder"); // Supondo que você tenha uma classe 'esconder' no CSS
+        }
+
+        // Exemplo para o menu do usuário
+        function toggleUserMenu() {
+            const userDropdown = document.getElementById("userDropdown");
+            userDropdown.classList.toggle("esconder");
+        }
+    </script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>

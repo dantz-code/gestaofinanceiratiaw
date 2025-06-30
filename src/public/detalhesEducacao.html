@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes - Educação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styleEducacao1.css">
+</head>
+
+<body>
+    <!--Navbar-->
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--Navbar-->
+
+    <main id="detalhes">
+        <div id="noticia"> </div>
+
+        <div id="comentariosCampos">
+            <h1>Comentários</h1>
+            <div class="containerComentários">
+                <h2>Insira seu comentário abaixo</h2>
+                <input type="text" id="InserirComentario" class="insiraComentario" placeholder="Comente aqui...">
+                <div class="botaoEnviar">
+                    <button class="btnEnviar" id="btnEnviar" onclick="EnviarComentario()">Enviar</button>
+                </div>
+            </div>
+            <h2>Mais Recentes</h2>
+            <div class="comentariosUsuarios" id="comentariosUsuarios">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="rodape" id="rodape">
+            <div class="logotipo">
+                <a href="index.html">
+                    <img src="/img/imgs-bernardo/logomelhorada.png" alt="Logotipo">
+                </a>
+            </div>
+
+            <div class="containerborder">
+                <p><strong>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</strong>
+                </p>
+                <div class="redes-sociais">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram da +Grana"><i
+                            class="fab fa-instagram"></i>+Grana</a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="linkedin da +Grana"><i
+                            class="fab fa-linkedin-in"></i>+Grana</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/appEducacao.js"></script>
+    <script>
+        /* Detalhes noticia */
+        let params = new URLSearchParams(location.search);
+        const id = parseInt(params.get("id"));
+        window.onload = () => {
+            fetch(`http://localhost:3000/educacao/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    educacao = data;
+                    let strNoticia = "";
+                    strNoticia += `
+                        <div class="corpoNoticia p-4 fs-2">
+                            <img src="/img/img-educacao/coracao-png.png" alt="Favoritar Noticia" class="favoritar" id="imgFavoritar" onclick="favorito(${educacao.id})">
+                                <h1>${educacao.titulo}</h1>
+                                <p class="resumo">${educacao.resumo}</p>
+                                <p class="autor">${educacao.autor}</p>
+                                <p class="data">${educacao.data}</p>
+                                <div class="bannerDetalhe">
+                                    <img src="${educacao.imagem}" alt="${educacao.descricao}" class="imgBanner">
+                                </div>
+                                <div class="textoNoticia"><p class="texto">${educacao.texto}</p></div>
+                        </div>`;
+
+                    if (educacao.extras && educacao.extras.length > 0) {
+                        educacao.extras.forEach(extra => {
+                            strNoticia += `
+                                <div class="extraNoticia">
+                                    ${extra.corpo}
+                                    ${extra.imagem ? `<img src="${extra.imagem}" alt="${extra.subtitulo}" class="imagemComplementar">` : ""}
+                                </div>
+                                `;
+                        });
+                    }
+
+                    /* Fetch para carregar o comentário com base no ID */
+                    let campoComentario = "";
+                    educacao.comentario.forEach(coment => {
+                        campoComentario += `
+                        <div class="comentarioInserido">
+                            <p>${coment.usuario}</p>
+                            <img src="/img/img-educacao/chat.png" class="iconeUsuario" alt="Icone Usuario">
+                            <input type="text" class="comentarioUsuario" value="${coment.comentario}" readonly>`;
+                    })
+
+                    document.getElementById("noticia").innerHTML = strNoticia;
+                    document.getElementById("comentariosUsuarios").innerHTML = campoComentario;
+
+                    const iconElement = document.getElementById("imgFavoritar");
+                    if (educacao.favoritado == true)
+                        iconElement.src = "/img/img-educacao/coracao-vermelho.png"
+                }).catch(err => console.error(err));
+
+
+        }
+
+        const menuBtn = document.getElementById("hamburguerMenu");
+        const dropdown = document.getElementById("dropdownMenu");
+
+        menuBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            dropdown.classList.toggle("esconder");
+        });
+
+        // Fecha o dropdown ao clicar fora dele
+        window.addEventListener("click", function (e) {
+            if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add("esconder");
+            }
+        });
+    </script>
+    <script>
+    </script>
+    <script>
+        async function favorito(id) {
+            try {
+                const res = await fetch(`http://localhost:3000/educacao/${id}`);
+                const data = await res.json();
+                const novoStatus = !data.favoritado;
+
+                await fetch(`http://localhost:3000/educacao/${id}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ favoritado: novoStatus })
+                });
+                const iconElement = document.getElementById("imgFavoritar");
+                if (data.favoritado == true)
+                    iconElement.src = "/img/img-educacao/coracao-vermelho.png"
+
+                iconElement.src = novoStatus
+                    ? "/img/img-educacao/coracao-vermelho.png"
+                    : "/img/img-educacao/coracao-png.png";
+
+            } catch (error) {
+                console.error("Erro ao favoritar:", error);
+                alert("Não foi possível atualizar o favorito.");
+            }
+        }
+    </script>
+    <script src="js/user.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,585 @@
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Usando Montserrat como você indicou */
+    color: #333;
+    /* Cor padrão para textos */
+    line-height: 1.6;
+    display: flex;
+    /* Para empilhar header, main e footer */
+    flex-direction: column;
+    min-height: 100vh;
+    /* Garante que o body ocupe a altura total da viewport */
+}
+
+/* Header */
+.navbar {
+    background-color: #0a1a37;
+    width: 100%;
+    border-bottom: 4px solid #42e619;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo img {
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex: 1;
+}
+
+.menuHide {
+    display: none;
+}
+
+.pages li a {
+    display: block;
+    text-decoration: none;
+    color: #e7f5e9;
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding: 10px 10px;
+    transition: all 0.3s ease;
+}
+
+.pages li a:hover {
+    background-color: #42e619;
+    color: #0a1a37;
+    border-radius: 5px;
+}
+
+/* Menu de usuário e ícone de menu alinhados à direita */
+.right-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Ícone de menu (hambúrguer) */
+.fas.fa-bars {
+    font-size: 2.3rem;
+    color: #e7f5e9;
+    cursor: pointer;
+    display: block;
+    margin-right: 10px;
+    font-size: 30px;
+    height: 25px;
+}
+
+.fas.fa-bars:hover {
+    color: #42e619;
+}
+
+/*Dropdown do Menu*/
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 100px;
+    background-color: #fff;
+    list-style: none;
+    box-shadow: #42e619;
+    border-radius: 6px;
+    padding: 10px 10px;
+    width: 150px;
+    z-index: 1000;
+}
+
+.menu-dropdown li {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.menu-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.menu-dropdown li a:hover {
+    background-color: #42e619;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.menu-dropdown.show {
+    display: block;
+}
+
+/* Menu de usuário */
+.usuario-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.usuario-menu .fa-user {
+    font-size: 1.5rem;
+    color: #4fe42a;
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    background-color: #fff;
+    list-style: none;
+    box-shadow: #42e619;
+    border-radius: 6px;
+    padding: 10px 0;
+    width: 150px;
+    z-index: 1000;
+}
+
+.user-dropdown li {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.user-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.user-dropdown li a:hover {
+    background-color: #42e619;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .pages {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #e7f5e9;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .pages.show {
+        display: flex;
+    }
+
+    .menuHide {
+        display: flex;
+    }
+}
+
+/* --- Conteúdo Principal (Cards e FAQ) --- */
+main {
+    /* Contêiner para os cards e FAQ */
+    flex-grow: 1;
+    /* Permite que o main ocupe o espaço restante */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.header-line {
+    /* Mantido aqui pois está no seu HTML atual */
+    width: 100%;
+    height: 8px;
+    background-color: #42e619;
+}
+
+
+.container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.card-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.video-placeholder img {
+    width: 60px;
+    height: auto;
+    opacity: 0.6;
+}
+
+.text-placeholder {
+    width: 100%;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    resize: vertical;
+    min-height: 100px;
+    box-sizing: border-box;
+}
+
+.btn-send {
+    color: #0a1a36;
+    border: #0a1a36 2px solid;
+    background-color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btn-send:hover {
+    color: #e6f4e8;
+    background-color: #0a1a36;
+}
+
+/* --- Seção FAQ --- */
+.faq-section {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.faq-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    background-color: #f8f8f8;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #eef;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.15em;
+    color: #333;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.faq-question .arrow {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question .arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    background-color: #fff;
+    text-align: left;
+}
+
+.faq-answer p {
+    margin: 20px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 20px;
+}
+
+/* Footer */
+.rodape {
+    background-color: #0a1a37;
+    margin-top: 40px;
+    border-top: 8px solid #42e619;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    align-self: stretch;
+}
+
+.logotipo img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.containerborder {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.containerborder p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #e7f5e9;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.redes-sociais a {
+    color: #e7f5e9;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.redes-sociais a:hover {
+    color: #42e619;
+}
+
+/* Footer Fim */
+/* --- Responsividade Geral --- */
+@media (max-width: 1024px) {
+
+    /* Ajustes específicos para a página de conteúdo/categorias */
+    .app-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .categorias-coluna,
+    .conteudos-coluna {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustes para a página atual (tutorial.html) */
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .carrossel-container {
+        /* Se houver carrossel nessa página */
+        width: 100%;
+        height: auto;
+    }
+
+    .slide {
+        height: auto;
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+    }
+
+    .prev,
+    .next {
+        display: none;
+    }
+
+    .info-investimento {
+        /* Se houver info-investimento nessa página */
+        padding: 15px;
+    }
+
+    .info-investimento h3 {
+        font-size: 1.4rem;
+    }
+
+    .info-investimento p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Navbar mobile */
+    .navbar .logo img {
+        width: 180px;
+        /* Reduz o tamanho da logo em mobile */
+        height: auto;
+    }
+
+    .navbar .pages li a {
+        font-size: 1.5rem;
+    }
+
+    /* Footer mobile */
+    .rodape {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logotipo img {
+        width: 220px;
+        /* Reduz o tamanho da logo do footer em mobile */
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .redes-sociais {
+        gap: 15px;
+    }
+
+    .containerborder p {
+        font-size: 1rem;
+    }
+
+    .info-investimento {
+        margin-top: 20px;
+    }
+
+    /* Conteúdo principal mobile */
+    .card {
+        padding: 20px;
+    }
+
+    .faq-section {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .pages li a {
+        font-size: 1.2rem;
+        padding: 8px 5px;
+    }
+
+    /* Conteúdo principal mobile */
+    .containerleft h3,
+    .containerright h3,
+    .containerright h4 {
+        font-size: 1rem;
+    }
+
+    .containerleft p,
+    .containerright p {
+        font-size: 0.95rem;
+    }
+
+    .carrossel-container {
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .redes-sociais a {
+        font-size: 1.3em;
+    }
+}

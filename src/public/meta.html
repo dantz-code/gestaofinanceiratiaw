@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minhas Metas Financeiras</title>
+  <link rel="stylesheet" href="css/metas.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+  <!--Navbar-->
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
+                </a>
+            </div>
+
+            <ul class="pages" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pagina-noticias.html">Notícias</a></li>
+                <li><a href="paginaEducacao.html">Educação</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+
+            <div class="right-icons">
+                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                <ul class="menu-dropdown" id="menuDropdown">
+                    <li class="menuHide"><a href="index.html">Home</a></li>
+                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
+                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
+                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
+                    <li><a href="meta.html">Metas</a></li>
+                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="favoritos.html">Favoritos</a></li>
+                    <li><a href="gastostabela.html">Gastos</a></li>
+                    <li><a href="tutorial.conosco.html">Tutoriais</a></li>
+                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                </ul>
+            </div>
+
+            <div class="usuario-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li id="userMenu"></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+  <!--Navbar-->
+  <main>
+    <section class="intro">
+      <h2>Planeje suas Metas Financeiras</h2>
+      <p>Estabelecer metas é essencial para conquistar seus sonhos e manter o controle do seu dinheiro.</p>
+      <p>Com essa ferramenta, você poderá <strong>criar, editar e acompanhar</strong> seus objetivos, visualizando o
+        progresso financeiro em tempo real.</p>
+      <p>Assim, fica mais fácil se organizar e alcançar aquilo que realmente importa.</p>
+    </section>
+    <section class="bloco-conteudo exemplo-meta">
+      <h3>Exemplo de meta preenchida</h3>
+      <p><strong>Meta:</strong> Comprar uma moto</p>
+      <p><strong>Valor a alcançar:</strong> R$ 10.000,00</p>
+      <p><strong>Valor guardado:</strong> R$ 5.000,00</p>
+      <p><strong>Data final:</strong> 30/06/2025</p>
+      <p><strong>Status:</strong> Em andamento</p>
+      <p><strong>Progresso:</strong> 50% — Faltam R$ 5.000,00 para atingir o objetivo.</p>
+    </section>
+
+
+    <!-- Bloco da tabela -->
+    <section class="bloco-conteudo">
+      <button id="btnNovaMeta">+ Nova Meta</button>
+
+      <section id="listaMetas">
+        <table>
+          <thead>
+            <tr class="sera">
+              <th>Meta</th>
+              <th>Valor a alcançar (R$)</th>
+              <th>Valor guardado (R$)</th>
+              <th>Data final</th>
+              <th>Progresso</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabelaMetas">
+            <!-- Metas dinâmicas -->
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <!-- Bloco do formulário -->
+    <section class="bloco-conteudo" id="formularioMeta" style="display: none;">
+      <h3>Cadastrar Nova Meta</h3>
+      <form id="formMeta">
+        <input type="hidden" id="idMeta">
+
+                <label>Qual o nome da sua Meta?
+                    <input type="text" id="nomeMeta" required>
+                  </label>
+
+                <label>Quanto você quer guardar? (R$)
+                    <input type="number" id="valorObjetivo" min="0" step="any" required>
+                  </label>
+
+                <label>Quanto você já tem? (R$)
+                    <input type="number" id="valorAtual" min="0" step="any" required>
+                  </label>
+
+                <label>Em quanto tempo deseja alcançar o objetivo?
+                    <input type="date" id="dataLimite" required>
+                  </label>
+
+                <button type="submit">Salvar Meta</button>
+                <button type="button" id="cancelarMeta">Cancelar</button>
+             
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div class="rodape" id="rodape">
+      <div class="logotipo">
+        <a href="index.html">
+          <img src="/img/imgs-bernardo/logomelhorada.png" alt="Logotipo">
+        </a>
+      </div>
+
+      <div class="containerborder">
+        <p><strong>A +Grana te ajuda a cuidar melhor do seu patrimônio, vem aprender com a gente!</strong>
+        </p>
+        <div class="redes-sociais">
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram da +Grana"><i
+              class="fab fa-instagram"></i>+Grana</a>
+          <a href="https://linkedin.com" target="_blank" aria-label="linkedin da +Grana"><i
+              class="fab fa-linkedin-in"></i>+Grana</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div id="notificacao" class="toast"></div>
+
+  <script src="js/user.js"></script>
+
+  <script src="js/metas.js"></script>
+
+  <script>
+    const menuBtn = document.getElementById("hamburguerMenu");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    menuBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      dropdown.classList.toggle("esconder");
+    });
+
+    // Fecha o dropdown ao clicar fora dele
+    window.addEventListener("click", function (e) {
+      if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add("esconder");
+      }
+    });
+  </script>
+
+</body>
+
+</html>

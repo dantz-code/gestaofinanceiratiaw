@@ -1,0 +1,733 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 100%;
+}
+
+main {
+  flex: 1
+}
+
+/* Navbar */
+.navbar {
+  background-color: #0a1a37;
+  width: 100%;
+  border-bottom: 8px solid #42e619;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 20px;
+}
+
+.logo img {
+  width: 250px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.pages {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.menuHide {
+  display: none;
+}
+
+.pages li a {
+  display: block;
+  text-decoration: none;
+  color: #e7f5e9;
+  font-weight: bold;
+  font-size: 1.8rem;
+  padding: 10px 10px;
+  transition: all 0.3s ease;
+}
+
+.pages li a:hover {
+  background-color: #42e619;
+  color: #0a1a37;
+  border-radius: 5px;
+}
+
+/* Menu de usuário e ícone de menu alinhados à direita */
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* Ícone de menu (hambúrguer) */
+.fas.fa-bars {
+  font-size: 2.3rem;
+  color: #e7f5e9;
+  cursor: pointer;
+  display: block;
+  margin-right: 10px;
+  font-size: 30px;
+  height: 25px;
+}
+
+.fas.fa-bars:hover {
+  color: #42e619;
+}
+
+/*Dropdown do Menu*/
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 10px;
+  background-color: #fff;
+  list-style: none;
+  box-shadow: #42e619;
+  border-radius: 6px;
+  padding: 10px 10px;
+  width: 150px;
+  z-index: 1000;
+}
+
+.menu-dropdown li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.menu-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+}
+
+.menu-dropdown li a:hover {
+  background-color: #42e619;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.menu-dropdown.show {
+  display: block;
+}
+
+/* Menu de usuário */
+.usuario-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.usuario-menu .fa-user {
+  font-size: 1.5rem;
+  color: #4fe42a;
+  padding: 20px;
+  font-size: 30px;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 70px;
+  background-color: #fff;
+  list-style: none;
+  box-shadow: #42e619;
+  border-radius: 6px;
+  padding: 10px 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.user-dropdown li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.user-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+}
+
+.user-dropdown li a:hover {
+  background-color: #42e619;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .pages {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #e7f5e9;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .pages.show {
+    display: flex;
+  }
+
+  .menuHide {
+    display: flex;
+  }
+}
+
+
+/*Espaço na direita pra deixar os links no centro, não sei fazer isso sem bootstrap ou gambiarra*/
+.espaco {
+  width: 250px;
+}
+
+/* Container principal de notícias */
+.noticias-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.noticias-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.8rem;
+  color: #0a1a37;
+}
+
+/* Grid de cards */
+.grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Estilo dos cards */
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h2 {
+  padding: 16px;
+  font-size: 1.4rem;
+  color: #0a1a37;
+  border-top: 4px solid #42e619;
+}
+
+/* Estilos do Modal */
+.modal {
+  display: none;
+  position: fixed;
+  /* Fixa o modal na tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Fundo escuro para destacar o modal */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* Garante que o modal fique acima de outros elementos */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 800px;
+  width: 80%;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.close:hover {
+  color: #ff0000;
+}
+
+
+.like-button {
+  background-color: #ff3366;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.like-button:hover {
+  background-color: #e62e5c;
+}
+
+.like-button .like-count {
+  margin-left: 5px;
+}
+
+/*Footer*/
+.rodape {
+  background-color: #0a1a37;
+  margin-top: 40px;
+  border-top: 8px solid #42e619;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logotipo img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.containerborder {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.containerborder p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  color: #e7f5e9;
+}
+
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.redes-sociais a {
+  color: #e7f5e9;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.redes-sociais a:hover {
+  color: #42e619;
+}
+
+
+body {
+  font-family: sans-serif;
+  background: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card-noticia {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card-noticia:hover {
+  transform: scale(1.02);
+}
+
+.card-noticia img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-noticia h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.card-noticia p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background: white;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#noticias-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card-noticia {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.card-noticia:hover {
+  transform: scale(1.03);
+}
+
+.card-noticia img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.favorite-icon {
+  color: gray;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: color 0.3s ease;
+}
+
+.favorite-icon.favorito {
+  color: red;
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 999;
+  transition: left 0.3s ease;
+}
+
+.menu-lateral.show {
+  left: 0;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral ul li {
+  margin: 15px 0;
+}
+
+.menu-lateral ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.menu-lateral ul li a img.imgHamburguer {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.fechar-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.favorito-card {
+  width: 250px;
+  padding: 15px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  text-align: center;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.favorito-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.favorito-card h3 {
+  font-size: 1rem;
+  margin: 10px 0 5px;
+}
+
+.favorito-card p {
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+#favoritos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Ícone de menu (hambúrguer) */
+.fa-solid.fa-bars {
+  font-size: 2.3rem;
+  color: black;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 30px;
+  height: 25px;
+}
+
+.menu-dropdown li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.menu-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.menu-dropdown li a:hover {
+  background-color: #42e619;
+  border-radius: 5px;
+}
+
+/* Classe para exibir o menu dropdown */
+.menu-dropdown.show {
+  display: block;
+}
+
+/* Usuário */
+.usuario-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.usuario-menu .fa-user {
+  font-size: 1.5rem;
+  color: #4fe42a;
+  padding: 20px;
+  font-size: 30px;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 70px;
+  background-color: #fff;
+  list-style: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.user-dropdown li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.user-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px 0;
+}
+
+.user-dropdown li a:hover {
+  background-color: #42e619;
+  border-radius: 5px;
+}
+/* Estilo do fundo escurecido */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Estilo da caixa de conteúdo */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  animation: slideDown 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão de fechar */
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+}
+
+/* Imagem da notícia */
+#modal-imagem {
+  width: 100%;
+  height: auto;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-40px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}

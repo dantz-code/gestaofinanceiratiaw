@@ -1,0 +1,228 @@
+{
+  "educacao": [
+    {
+      "id": "1",
+      "titulo": "Como o dólar alto afeta o bolso dos brasileiros",
+      "resumo": "Apesar dos recentes recuos, moeda norte-americana ainda acumula valorização de 12,6% contra o real em 2024",
+      "texto": "<p>Apesar do forte recuo do dólar nos últimos dias, fechando a semana cotado a R$ 5,46, a divisa ainda se mantém no maior patamar desde 2022 — resultado de uma escalada iniciada em abril e que se intensificou em junho.<br> Em 2024 a moeda ainda acumula elevação de 12,6%.<br>Desde viagens ao exterior até o encarecimento de produtos nas gôndolas dos supermercados, o dólar alto deve afetar a economia e o bolso dos brasileiros a curto e médio prazo, segundo economistas ouvidos pela CNN.<br>Confira abaixo como a perda de valor do real ante a principal moeda do globo tende a impactar o cotidiano no Brasil.</p><h1>Viagens mais caras</h1><p>Um dos principais sinais perceptíveis da alta do dólar está no encarecimento das viagens ao exterior.<br>Neste caso, o efeito mais palpável está na perda de valor da moeda brasileira — o que demanda mais reais para compra de produtos ou contratação de serviços cotados em dólar.<br>Em outro aspecto, o custo das passagens também se torna menos acessível, já que grande parte das despesas das companhias aéreas está atrelada à moeda norte-americana.<br>\"De forma imediata, vejo efeito que se a pessoa está com viagem marcada ou com algum compromisso de compra de imóvel fora do país, por exemplo, onde se precisa desembolsar o valor em dólar\", explica a economista-chefe do Ouribank, Cristiane Quartaroli.</p><h1>Produtos mais caros no Brasil</h1><p>O encarecimento dos produtos nas lojas e supermercados no Brasil é outro efeito relacionado ao aumento da cotação do câmbio.<br> Por um lado, a importação de bens se torna mais cara diante da disparidade do valor entre o real e a divisa norte-americana. Esse efeito acaba se espalhando por toda a cadeia, visto que mesmo itens produzidos no Brasil usam componentes, insumos ou maquinários estrangeiros.<br>\"Mesmo nos grãos, que o Brasil tem certo protagonismo, as cotações também são estabelecidas em dólar, então soja e milho podem ficar mais caros\", explica André Braz, pesquisador do Instituto Brasileiro de Economia da Fundação Getulio Vargas (Ibre/FGV).<br>O aumento do dólar também torna o mercado internacional mais atraente, fazendo com que produtores brasileiros priorizem as exportações ao consumo interno. Com menos oferta disponível, o preço do produto tende a apontar para cima.<br>\"Sempre que o real se desvaloriza frente ao dólar, é como se os produtos brasileiros entrassem em promoção e isso pode estimular um volume maior de exportações\", complementa Braz</p>",
+      "favoritado": false,
+      "autor": "Isabella Marzolla",
+      "data": "07/07/2024",
+      "categoria": "educacao",
+      "imagem": "/img/img-educacao/dolar.jpg",
+      "descricao": "Imagem dolar",
+      "comentario": [
+        {
+          "id": "1",
+          "usuario": "João",
+          "comentario": "Essa dicas vão me ajudar muito!"
+        },
+        {
+          "id": "2",
+          "usuario": "Ana",
+          "comentario": "Gostei muito das explicações!"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "titulo": "Dicas de como economizar dinheiro no dia a dia",
+      "resumo": "Você sabe como fazer o dinheiro render ao final do mês? Como adaptar sua rotina para economizar todos os dias? Pode parecer difícil entender como economizar dinheiro ganhando pouco, mas sabendo como administrar o que recebe você consegue ir mais longe do que acredita.",
+      "texto": "<h1>Como economizar dinheiro no dia a dia? Dicas para a sua rotina!</h1><br><h2>1. Analise seus hábitos de consumo</h2><br><p>Mantenha um controle financeiro atualizado para entender seus hábitos de consumo. O \"conheça a si mesmo\" nunca fez tanto sentido quanto repassar a fatura do cartão no fim do mês.<br>Tome um tempo para registrar todas as suas despesas e receitas em uma planilha ou aplicativo, classificando-as por tipo e categoria.</p><br><h2>2. Crie metas de economia</h2><p>Estabeleça metas de economia claras e objetivas utilizando a metodologia SMART: específicas, mensuráveis, alcançáveis, relevantes e temporais. Assim, você tem a satisfação de alcançar um objetivo enquanto se sente motivado a economizar.<br>Veja esse exemplo: para viajar para a praia, você precisa economizar R$ 200 por mês ao longo de um ano. Essa meta é específica (R$ 200), mensurável (monitorar mensalmente), alcançável (ajustar gastos), relevante (para a viagem), e temporal (até o fim do ano).</p><br><h2>3. Priorize necessidades sobre desejos e corte o que for desnecessário</h2><p>Priorize suas necessidades e corte gastos desnecessários. Dos cinco serviços de assinatura, quantos você realmente assiste todo dia? E aquela academia, você está indo ou só pagando? <br>Avalie serviços por assinatura, como streaming e revistas, e cancele aqueles que não são usados regularmente. Verifique mensalidades de clubes ou compras programadas que podem ser ajustadas ou eliminadas para economizar mais.</p><h2>4. Negocie tarifas e contas</h2><p>Ligue para serviços como internet, telefone e TV a cabo, e negocie as melhores tarifas. Você pode aproveitar uma promoção ou reduzir pacotes que não está usando na totalidade.<br>Pergunte sobre descontos para pagamentos antecipados ou planos mais econômicos. Muitas vezes é possível reduzir significativamente as despesas com uma simples conversa.</p>",
+      "favoritado": false,
+      "autor": "PagBank",
+      "data": "01/11/2024",
+      "categoria": "educacao",
+      "imagem": "img/img-educacao/economia.jpg",
+      "descricao": "Organização Financeira",
+      "comentario": [
+        {
+          "id": "1",
+          "usuario": "Maria",
+          "comentario": "Eu não sabia como isso funcionava!"
+        },
+        {
+          "id": "2",
+          "usuario": "Carlos",
+          "comentario": "Isso vai ajudar no meu trabalho."
+        },
+        {
+          "id": "3",
+          "usuario": "Ricardo",
+          "comentario": "Vou aplicar isso no meu projeto."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "titulo": "O que é inflação e por que ela impacta no seu bolso?",
+      "resumo": "Inflação é um conceito que traduz o aumento generalizado de preços de bens e serviços. Entenda tudo sobre o índice e como ele afeta os seus investimentos",
+      "texto": "<br><h1>O que é inflação?</h1><p>Inflação é um termo da economia usado para designar o aumento generalizado de preços de bens e serviços. Com isso, a inflação representa o aumento do custo e vida e a consequente redução no poder de compra da moeda.</p><br><p>Uma forma simples de perceber a inflação é indo ao supermercado. O preço dos produtos nas prateleiras não são os mesmos praticados 10, 15 ou 20 anos atrás: estão mais caros. A inflação também impacta nos valores de itens maiores, como aluguel e automóveis, ou itens de longo prazo, como a mensalidade de uma faculdade ou pós-graduação.</p><br><p>Esse aumento de preços não é necessariamente ruim ou prejudicial ao consumidor, principalmente quando é controlado, espaçado ao longo do tempo e vem acompanhado de reajustes nos salários-mínimos. Mas pode causar transtornos para consumidores – e para a economia de um país – quando aumenta em uma velocidade maior do que pode ser absorvida.</p><br><h1>Quais são as causas da inflação?</h1><p>Um aumento nos índices de inflação pode ser influenciado por diferentes causas, que podem ser agrupadas em quatro grandes grupos:</p><br><ol><li> Aumento na demanda;</li><li> Aumento, ou pressões, nos custos de produção;</li><li> Inércia inflacionária e expectativas de inflação;</li><li> Aumento de emissão de moeda.</li></ol><br><p>As causas também podem ser divididas em de curto prazo ou um prazo maior, que aumentam de forma contínua durante meses ou até anos.  Dificilmente, no entanto, a causa da inflação será única.</p>",
+      "favoritado": false,
+      "autor": "InfoMoney",
+      "data": "6/11/2022",
+      "categoria": "educacao",
+      "imagem": "img/img-educacao/inflacao.jpg",
+      "descricao": "Inflação e dinheiro",
+      "comentario": [
+        {
+          "id": "1",
+          "usuario": "Marcos",
+          "comentario": "A inflação está muito alta!"
+        },
+        {
+          "id": "2",
+          "usuario": "Beatriz",
+          "comentario": "Muito interessante, obrigado por compartilhar."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "titulo": "Como fazer testamento? Saiba como criar um do zero",
+      "resumo": "Documento é a forma mais famosa de planejamento sucessório, mas é preciso saber fazê-lo para que tenha validade no futuro",
+      "texto": "<h1>O que é um testamento?</h1><p>Um testamento nada mais é do que uma declaração de vontade da pessoa que o faz (também chamada de \"testador\") sobre o que ela gostaria que acontecesse após a sua morte.</p><br><p>Como vimos, ele pode conter aspectos que vão além do patrimônio, desde que não extrapole o que a lei determina. Um exemplo foi o caso da apresentadora Glória Maria, que deixou expresso no testamento quem seriam os tutores legais de suas duas filhas, que tinham 14 e 15 anos quando ela faleceu, em fevereiro de 2023.</p><br><p>Outro caso conhecido e que não foi corretamente divulgado, segundo Viviane, foi de Nélida Pigñón, falecida em dezembro de 2022. Na ocasião, alguns veículos informaram que a escritora havia deixado um apartamento como herança para suas duas cachorrinhas.</p><br><p>\"A informação não foi divulgada corretamente, pois animal não pode receber patrimônio. Na verdade, ela deixou uma pessoa como tutora dos cachorros, que ficou responsável pela casa e pelos cuidados com os animais\", explica a advogada.</p><br><p>Viviane também observa que a tutoria (seja de pessoas ou animais) também pode ser expressa em outro tipo de documento, como uma carta de próprio punho, por exemplo. Porém, o testamento sempre tem mais força, principalmente se ele é do tipo público, conforme veremos mais adiante.</p>",
+      "favoritado": false,
+      "autor": "InfoMoney",
+      "data": "7/05/2024",
+      "categoria": "educacao",
+      "imagem": "img/img-educacao/testamento-assinado.jpg",
+      "descricao": "Para que serve um testamento?",
+      "comentario": [
+        {
+          "id": "1",
+          "usuario": "Jonathan",
+          "comentario": "Não sabia que era tão fácil assim!"
+        },
+        {
+          "id": "2",
+          "usuario": "Fernanda",
+          "comentario": "Essas informações são essenciais."
+        }
+      ]
+
+    }
+  ],
+  "noticias": [
+    {
+      "titulo": "Economia cresce no primeiro trimestre",
+      "imagem": "img/img-noticia/economia.png",
+      "resumo": "PIB sobe 2,5% no 1º trimestre, impulsionado pelos serviços. Setores de transporte e turismo se destacam.",
+      "texto": "O Produto Interno Bruto (PIB) brasileiro registrou crescimento de 2,5% no primeiro trimestre de 2025, impulsionado principalmente pelo forte desempenho do setor de serviços. Esse setor, que representa mais de 70% da economia nacional, teve expansão significativa, especialmente nas áreas de transporte, comércio e atividades turísticas, refletindo a recuperação do consumo interno e o aumento da confiança dos consumidores.\n\nSegundo dados divulgados pelo IBGE, o crescimento também foi apoiado pelo avanço da indústria de transformação e da construção civil, que demonstraram melhora após períodos de estagnação. A indústria teve aumento na produção de bens de capital e de consumo durável, o que sinaliza uma retomada dos investimentos e maior expectativa de crescimento futuro por parte das empresas.\n\nEmbora o setor agropecuário tenha apresentado desempenho mais tímido devido a fatores climáticos desfavoráveis e à sazonalidade, ele ainda contribuiu positivamente para o resultado geral. Os economistas destacam que a recuperação do mercado de trabalho e o aumento da renda média do brasileiro também influenciaram o bom desempenho do trimestre.\n\nA especialista em finanças pessoais, Renata Lins. A disciplina será interdisciplinar e aplicada com apoio de jogos, simulações e atividades práticas.\n\nA expectativa é que, em uma geração, o país veja uma queda significativa nos níveis de inadimplência e maior cultura de investimento e poupança entre jovens e adultos.",
+      "autor": "InfoReal",
+      "id": "1",
+      "favoritado": false
+    },
+    {
+      "titulo": "Educação financeira será obrigatória no ensino fundamental a partir de 2026",
+      "imagem": "/img/img-noticia/ensinoEducacao.jpeg",
+      "resumo": "Nova lei inclui finanças pessoais no currículo do ensino fundamental, com foco em poupança, consumo consciente e planejamento.",
+      "texto": "A partir do ano letivo de 2026, todas as escolas públicas e privadas do Brasil deverão incluir a disciplina de educação financeira no currículo do ensino fundamental. A nova lei sancionada pelo Governo Federal busca formar cidadãos mais preparados para lidar com o dinheiro desde cedo.\n\nA proposta envolve temas como poupança, consumo consciente, noções de juros, orçamento familiar e até investimentos simples. Professores passarão por formações específicas ainda em 2025, com apoio de plataformas digitais e materiais didáticos desenvolvidos em parceria com universidades.\n\nDe acordo com o Ministério da Educação, o objetivo é combater o analfabetismo financeiro que afeta grande parte da população brasileira. Uma pesquisa do SPC Brasil aponta que mais de 60% dos adultos não sabem calcular juros ou montar um orçamento básico.\n\nEducadores e economistas comemoraram a medida. “Quanto mais cedo a criança entende o valor do dinheiro, menores são as chances de se endividar na vida adulta”, afirmou a especialista em finanças pessoais, Renata Lins. A disciplina será interdisciplinar e aplicada com apoio de jogos, simulações e atividades práticas.\n\nA expectativa é que, em uma geração, o país veja uma queda significativa nos níveis de inadimplência e maior cultura de investimento e poupança entre jovens e adultos.",
+      "autor": "EducaMais",
+      "id": "2",
+      "favoritado": true
+    },
+    {
+      "titulo": "Número de investidores pessoa física na bolsa atinge 6 milhões",
+      "imagem": "/img/img-noticia/bolsaValores.jpg",
+      "resumo": "Popularização dos investimentos e apps acessíveis contribuem para crescimento dos investidores na B3.",
+      "texto": "A bolsa de valores brasileira (B3) atingiu em maio de 2025 a marca histórica de 6 milhões de investidores pessoa física ativos. Esse crescimento vem sendo impulsionado por plataformas digitais, redes sociais e a queda da taxa Selic, que estimulou a busca por alternativas à poupança.\n\nSegundo levantamento da própria B3, 75% dos novos investidores têm menos de 35 anos e começaram com valores abaixo de R$ 1.000. “A educação financeira ganhou força nos últimos anos, e isso está se refletindo no comportamento das novas gerações”, explica a analista Bruna Matos, da corretora InfoInvest.\n\nAlém disso, a pandemia acelerou o interesse das pessoas em entender como cuidar melhor do dinheiro. Com o avanço dos canais de educação financeira no YouTube e TikTok, conceitos como ações, fundos imobiliários e renda passiva se tornaram parte do vocabulário do brasileiro comum.\n\nContudo, especialistas alertam que o entusiasmo precisa vir acompanhado de conhecimento. Muitos entram na bolsa com expectativas irreais e acabam se frustrando com oscilações do mercado. Por isso, a CVM vem reforçando campanhas de orientação e proteção ao investidor iniciante.\n\nAinda assim, a projeção para o fim do ano é de mais 1 milhão de cadastros ativos, fortalecendo o mercado de capitais como ferramenta de democratização da riqueza.",
+      "autor": "investnews360.com",
+      "id": "3",
+      "favoritado": false
+    },
+    {
+      "titulo": "Pequenas empresas lideram geração de empregos formais em 2025",
+      "imagem": "/img/img-noticia/contratar.jpg",
+      "resumo": "Micro e pequenas empresas foram responsáveis por mais de 60% das novas vagas formais no primeiro semestre de 2025. O crescimento reflete políticas de incentivo e expansão do consumo interno.",
+      "texto": "De acordo com dados do CAGED divulgados nesta semana, micro e pequenas empresas foram responsáveis por 62% das vagas formais de emprego geradas no Brasil durante o primeiro semestre de 2025. O levantamento mostra uma recuperação robusta do setor após os anos de retração provocados pela pandemia e pela instabilidade econômica global.\n\nEntre os fatores que explicam esse crescimento estão o aumento do consumo interno, impulsionado pela elevação da renda média da população, e os programas de crédito facilitado para microempresários. O Programa Nacional de Apoio à Geração de Empregos (PRONAGE), lançado em 2024, foi citado como uma das iniciativas de maior impacto na ampliação de contratações.\n\nSetores como alimentação, varejo, logística e serviços digitais foram os que mais contrataram, com destaque para negócios que adotaram soluções tecnológicas e novas formas de relacionamento com o cliente. Especialistas apontam que a digitalização e a capacitação dos empreendedores foram cruciais para esse avanço.\n\nA economista Camila Rocha, da consultoria DataMoney, afirma que as pequenas empresas estão se tornando protagonistas do crescimento econômico brasileiro. “O ambiente de negócios ainda tem desafios, como a carga tributária e a burocracia, mas o dinamismo e a adaptabilidade dos pequenos empresários têm sido um motor importante para o país”, destacou.\n\nA expectativa do setor é positiva para o segundo semestre. Com a redução da taxa básica de juros (Selic), prevista para o final do ano, e a manutenção de programas de estímulo à formalização, espera-se uma nova rodada de investimentos e expansão.\n\nO governo também anunciou que irá lançar o Portal Simplifica, uma plataforma digital para centralizar serviços de regularização e apoio a micro e pequenos negócios. A iniciativa deve facilitar ainda mais a formalização e a gestão das empresas de menor porte, contribuindo para a sustentabilidade do crescimento do setor.",
+      "autor": "finapress.com.br",
+      "id": "4",
+      "favoritado": false
+    },
+    {
+      "titulo": "Tecnologia impulsiona pequenos negócios no pós-pandemia",
+      "imagem": "/img/img-noticia/tecnologia.jpg",
+      "resumo": "Digitalização e ferramentas financeiras alavancam faturamento de microempresas em até 40%.",
+      "texto": "Pequenos empreendedores têm colhido os frutos da transformação digital no Brasil. Segundo pesquisa do Sebrae, mais de 70% das microempresas que digitalizaram seus processos em 2024 aumentaram o faturamento em pelo menos 30%.\n\nFerramentas como maquininhas inteligentes, aplicativos de gestão, plataformas de pagamento e redes sociais estão entre os principais aliados dos pequenos negócios. A pandemia acelerou essa tendência, e agora os resultados positivos começam a aparecer.\n\nA empresária Luciana Nunes, dona de uma loja de cosméticos naturais em Curitiba, viu suas vendas triplicarem após criar um e-commerce e automatizar o controle de estoque. “Antes era tudo no papel. Hoje eu controlo tudo pelo celular e ganho muito mais tempo”, afirma.\n\nAlém disso, programas de capacitação gratuitos, como o Brasil Mais Digital, têm ajudado milhares de empreendedores a usar a tecnologia a seu favor. O resultado é um ecossistema mais competitivo, moderno e sustentável.\n\nEspecialistas apontam que o investimento em tecnologia não é mais um luxo, mas uma necessidade básica para a sobrevivência dos negócios. Com isso, o microempreendedor do futuro será também um gestor digital.",
+      "autor": "tecnonegocio.net",
+      "id": "5",
+      "favoritado": false
+    },
+    {
+      "titulo": "Aplicativos de finanças pessoais ajudam brasileiros a sair do vermelho",
+      "imagem": "/img/img-noticia/aplicativo.jpg",
+      "resumo": "Ferramentas digitais de controle financeiro se popularizam e ajudam famílias a equilibrar as contas.",
+      "texto": "Com a inflação ainda pressionando o orçamento de milhares de brasileiros, os aplicativos de finanças pessoais têm ganhado cada vez mais espaço como aliados no combate às dívidas e na busca por organização financeira. Em 2025, o número de downloads de apps de controle de gastos cresceu 46% em relação ao ano anterior, segundo dados da Associação Brasileira de Fintechs.\n\nApps como Organizze, Minhas Economias e Mobills permitem que o usuário registre receitas e despesas, crie metas de economia, receba alertas de vencimentos e até simule investimentos. A facilidade de uso e os gráficos intuitivos contribuem para que mesmo pessoas sem conhecimento técnico consigam acompanhar sua vida financeira.\n\n“Antes eu não sabia para onde meu dinheiro estava indo. Agora consigo controlar tudo, e no fim do mês sobra um valor que uso para investir”, conta Mariana Lopes, autônoma de 34 anos que começou a usar um desses apps há um ano. Mariana conseguiu sair do cheque especial e já planeja montar sua reserva de emergência.\n\nEconomistas destacam que o primeiro passo para conquistar saúde financeira é justamente a conscientização dos gastos. “Saber onde e como se gasta é o ponto de partida para qualquer estratégia”, afirma Carlos Medina, da PlanejaFácil.\n\nO uso de aplicativos também tem sido incentivado por instituições financeiras, que oferecem integração com contas bancárias e cartões de crédito. A tendência é que a tecnologia continue sendo uma das principais ferramentas para combater o endividamento e promover a educação financeira no Brasil.",
+      "autor": "FocoFinanceiro",
+      "id": "6",
+      "favoritado": false
+    }
+  ],
+  "investimento": [
+    {
+      "id": "1",
+      "titulo": "Bitcoin",
+      "imagem": "img/imgs-bernardo/bitcoin.jpg",
+      "resumo": "A criptomoeda mais conhecida do mundo, volátil e descentralizada.",
+      "favoritado": false,
+      "texto": "As criptomoedas, como o Bitcoin e o Ethereum, representam uma revolução no sistema financeiro. Elas são moedas digitais descentralizadas, operando por meio da tecnologia blockchain — uma estrutura segura e transparente que dispensa intermediários, como bancos. Investir em criptoativos pode trazer grandes retornos em curto espaço de tempo, mas também apresenta alta volatilidade e riscos consideráveis. É ideal para investidores com perfil mais arrojado, dispostos a acompanhar tendências tecnológicas e econômicas. A chave é estudar o mercado, acompanhar notícias e investir com cautela e estratégia.",
+      "comentario": [
+        {
+          "id": "1",
+          "usuario": "Bernardo",
+          "comentario": "Investimento fera demais!"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "titulo": "Bolsa de Valores",
+      "imagem": "img/imgs-bernardo/bolsa.jpg",
+      "favoritado": false,
+      "resumo": "Investimento em ações de empresas. Alta rentabilidade com riscos.",
+      "texto": "A bolsa de valores é o ambiente onde se negociam ações de empresas de capital aberto, títulos de dívida e outros ativos financeiros. Investir em ações significa tornar-se sócio de empresas, participando de seus lucros (via dividendos) e crescimento (via valorização das ações).Esse tipo de investimento é excelente para quem pensa no longo prazo, já que a oscilação diária do mercado pode assustar os iniciantes. Porém, com estudo, disciplina e diversificação, a bolsa oferece grandes oportunidades de construção de patrimônio. É uma ferramenta essencial para quem busca independência financeira."
+    },
+    {
+      "id": "3",
+      "titulo": "Ouro",
+      "imagem": "img/imgs-bernardo/ouro3.jpg",
+      "favoritado": false,
+      "resumo": "Ativo físico considerado proteção em tempos de crise econômica.",
+      "texto": "O ouro é um dos ativos mais antigos e valorizados da história da humanidade. Ele é visto como um \"porto seguro\" nos investimentos, pois tende a se valorizar em momentos de crise econômica, instabilidade política ou alta inflação. Embora não gere renda como dividendos ou juros, o ouro preserva valor ao longo do tempo, sendo uma excelente opção para diversificação de portfólio. Também é utilizado como proteção contra a desvalorização de moedas locais. É indicado tanto para investidores conservadores quanto para aqueles que buscam equilíbrio em tempos incertos."
+    }
+  ],
+  "metas": [
+    {
+      "id": "1f55",
+      "nome": "Computador",
+      "valorObjetivo": 5000,
+      "valorAtual": 500,
+      "dataLimite": "2026-01-01",
+      "usuarioId": "1"
+    }
+  ],
+  "gastos": [],
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "admin",
+      "data": "01/01/2000",
+      "endereco": "Avenida Brasil, 2000, Barra da Tijuca, Rio de Janeiro",
+      "admin": true,
+      "senha": "admin123",
+      "salario": "R$3000,00"
+    },
+    {
+      "id": "2",
+      "nome": "Bernardo",
+      "data": "0001-01-01",
+      "endereco": "Rua 1",
+      "usuario": "Bernardo",
+      "senha": "123",
+      "salario": "1",
+      "admin": false
+    }
+  ],
+  "messages": []
+}

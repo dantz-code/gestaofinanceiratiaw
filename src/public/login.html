@@ -64,64 +64,95 @@
   </div>
 
   <script>
-    // Função para cadastrar novo usuário
-    document.getElementById("formCadastro").addEventListener("submit", function (e) {
-      e.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
 
-      const nome = document.getElementById("nome").value;
-      const data = document.getElementById("nascimento").value;
-      const endereco = document.getElementById("endereco").value;
-      const usuario = document.getElementById("usuario").value;
-      const senha = document.getElementById("senha").value;
-      const salario = document.getElementById("salario").value;
+        // --- CONFIGURAÇÕES E FUNÇÕES GLOBAIS ---
+        const FIREBASE_URL = 'https://dbgestao-1208c-default-rtdb.firebaseio.com';
 
-      const novoUsuario = { nome, data, endereco, usuario, senha, salario };
+        function firebaseObjectToArray(data) {
+            return data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
+        }
 
-      // Antes de cadastrar, verificar se usuário já existe
-      fetch("http://localhost:3000/usuarios?usuario=" + encodeURIComponent(usuario))
-        .then(res => res.json())
-        .then(existingUsers => {
-          if (existingUsers.length > 0) {
-            alert("Este nome de usuário já está em uso. Escolha outro.");
-            return;
-          }
-          // Cadastrar
-          fetch("http://localhost:3000/usuarios", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(novoUsuario),
-          })
-            .then(res => {
-              if (!res.ok) throw new Error("Erro ao cadastrar");
-              alert("Cadastro realizado com sucesso! Faça login.");
-              document.getElementById("formCadastro").reset();
-            })
-            .catch(() => alert("Erro ao cadastrar usuário."));
-        })
-        .catch(() => alert("Erro ao verificar usuário."));
+        // --- LÓGICA DO FORMULÁRIO DE CADASTRO ---
+        const formCadastro = document.getElementById("formCadastro");
+        if (formCadastro) {
+            formCadastro.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const nome = document.getElementById("nome").value;
+                const data = document.getElementById("nascimento").value;
+                const endereco = document.getElementById("endereco").value;
+                const usuario = document.getElementById("usuario").value;
+                const senha = document.getElementById("senha").value;
+                const salario = document.getElementById("salario").value;
+                
+                // Adicionamos o 'admin: false' por padrão para novos usuários
+                const novoUsuario = { nome, data, endereco, usuario, senha, salario, admin: false };
+
+                try {
+                    // 1. Pega todos os usuários para verificar se o nome de usuário já existe
+                    const response = await fetch(`${FIREBASE_URL}/usuarios.json`);
+                    const dataUsuarios = await response.json();
+                    const usuarios = firebaseObjectToArray(dataUsuarios);
+
+                    const usuarioExiste = usuarios.some(u => u.usuario === usuario);
+
+                    if (usuarioExiste) {
+                        alert("Este nome de usuário já está em uso. Escolha outro.");
+                        return;
+                    }
+
+                    // 2. Se não existe, cria o novo usuário com POST
+                    const createResponse = await fetch(`${FIREBASE_URL}/usuarios.json`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(novoUsuario),
+                    });
+
+                    if (!createResponse.ok) throw new Error("Erro ao cadastrar");
+
+                    alert("Cadastro realizado com sucesso! Agora você pode fazer login.");
+                    formCadastro.reset();
+
+                } catch (error) {
+                    console.error("Erro no cadastro:", error);
+                    alert("Erro ao tentar realizar o cadastro.");
+                }
+            });
+        }
+
+        // --- LÓGICA DO FORMULÁRIO DE LOGIN ---
+        const formLogin = document.getElementById("formLogin");
+        if (formLogin) {
+            formLogin.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const usuario = document.getElementById("loginUsuario").value;
+                const senha = document.getElementById("loginSenha").value;
+
+                try {
+                    const response = await fetch(`${FIREBASE_URL}/usuarios.json`);
+                    const dataUsuarios = await response.json();
+                    const usuarios = firebaseObjectToArray(dataUsuarios);
+
+                    // Procura na lista pelo usuário e senha correspondentes
+                    const usuarioEncontrado = usuarios.find(u => u.usuario === usuario && u.senha === senha);
+                    
+                    if (usuarioEncontrado) {
+                        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+                        alert(`Bem-vindo, ${usuarioEncontrado.nome}!`);
+                        window.location.href = "index.html"; // Redireciona para a home
+                    } else {
+                        alert("Usuário ou senha incorretos.");
+                    }
+
+                } catch (error) {
+                    console.error("Erro no login:", error);
+                    alert("Erro ao tentar fazer login.");
+                }
+            });
+        }
     });
-
-    // Função para login
-    document.getElementById("formLogin").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const usuario = document.getElementById("loginUsuario").value;
-      const senha = document.getElementById("loginSenha").value;
-
-      fetch(`http://localhost:3000/usuarios?usuario=${encodeURIComponent(usuario)}&senha=${encodeURIComponent(senha)}`)
-        .then(res => res.json())
-        .then(users => {
-          if (users.length === 1) {
-            const user = users[0];
-            localStorage.setItem("usuarioLogado", JSON.stringify(user));
-            alert(`Bem-vindo, ${user.nome}!`);
-            window.location.href = "index.html";
-          } else {
-            alert("Usuário ou senha incorretos.");
-          }
-        })
-        .catch(() => alert("Erro ao tentar fazer login."));
-    });
-  </script>
+</script>
 </body>
 </html>

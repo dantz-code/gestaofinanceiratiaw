@@ -4,7 +4,7 @@
   "description": "Meu site financeiro",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./node_modules/json-server/lib/bin.js --watch /db/db.json --host 0.0.0.0 --port ${PORT:-3000} --static ./public"
+    "start": "node ./node_modules/json-server/lib/bin.js --watch db/db.json --host 0.0.0.0 --port ${PORT:-3000} --static ./public"
   },
   "dependencies": {
     "cors": "^2.8.5",

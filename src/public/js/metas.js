@@ -1,7 +1,8 @@
 'use strict';
 
 // --- CONFIGURAÇÃO ---
-const API_URL = "http://localhost:3000/metas";
+// URL base para a sua coleção "metas" no Firebase
+const API_URL = "https://dbgestao-1208c-default-rtdb.firebaseio.com/metas";
 
 // --- SELETORES DO DOM ---
 const btnNovaMeta = document.getElementById("btnNovaMeta");
@@ -18,9 +19,13 @@ const tituloFormulario = document.querySelector("#formularioMeta h3");
 async function carregarMetas() {
     try {
         const user = JSON.parse(localStorage.getItem("usuarioLogado"));
-        const response = await fetch(`${API_URL}?usuarioId=${user.id}`);
+        // A sintaxe de consulta do Firebase é diferente: ?orderBy="campo"&equalTo="valor"
+        const response = await fetch(`${API_URL}.json?orderBy="usuarioId"&equalTo="${user.id}"`);
         if (!response.ok) throw new Error("Erro de rede ao buscar metas.");
-        const metas = await response.json();
+        
+        const metasObjeto = await response.json();
+        // A resposta do Firebase para uma consulta pode vir como um objeto, então precisamos convertê-la para um array
+        const metas = metasObjeto ? Object.keys(metasObjeto).map(key => ({ id: key, ...metasObjeto[key] })) : [];
 
         corpoTabela.innerHTML = "";
         metas.forEach(renderizarLinhaMeta);
@@ -29,6 +34,7 @@ async function carregarMetas() {
         mostrarNotificacao("❌ Falha ao carregar dados do servidor.");
     }
 }
+
 
 // Lida com o envio do formulário (CRIAR ou EDITAR)
 async function handleFormSubmit(event) {
@@ -45,7 +51,8 @@ async function handleFormSubmit(event) {
     };
 
     const isEditing = !!id;
-    const url = isEditing ? `${API_URL}/${id}` : API_URL;
+    // Adiciona .json para criar e /{id}.json para editar
+    const url = isEditing ? `${API_URL}/${id}.json` : `${API_URL}.json`;
     const method = isEditing ? 'PUT' : 'POST';
 
     try {
@@ -59,7 +66,7 @@ async function handleFormSubmit(event) {
 
         mostrarNotificacao(isEditing ? "✏️ Meta atualizada!" : "✅ Meta criada!");
         fecharFormulario();
-        carregarMetas();
+        await carregarMetas();
     } catch (error) {
         console.error("Erro ao salvar:", error);
         mostrarNotificacao("❌ Erro ao salvar a meta.");
@@ -71,11 +78,12 @@ async function removerMeta(id) {
     if (!confirm("Tem certeza que deseja remover esta meta?")) return;
 
     try {
-        const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+        // Adiciona /{id}.json para deletar um item específico
+        const response = await fetch(`${API_URL}/${id}.json`, { method: 'DELETE' });
         if (!response.ok) throw new Error("Falha ao remover a meta.");
 
         mostrarNotificacao("🗑️ Meta removida com sucesso!");
-        carregarMetas();
+        await carregarMetas();
     } catch (error) {
         console.error("Erro em removerMeta:", error);
         mostrarNotificacao("❌ Erro ao remover a meta.");
@@ -85,11 +93,12 @@ async function removerMeta(id) {
 // Prepara o formulário para edição de uma meta
 async function editarMeta(id) {
     try {
-        const response = await fetch(`${API_URL}/${id}`);
+        // Adiciona /{id}.json para buscar um item específico
+        const response = await fetch(`${API_URL}/${id}.json`);
         if (!response.ok) throw new Error("Meta não encontrada.");
         const meta = await response.json();
 
-        idMetaInput.value = meta.id;
+        idMetaInput.value = id; // O ID vem do parâmetro, não da resposta do Firebase
         document.getElementById("nomeMeta").value = meta.nome;
         document.getElementById("valorObjetivo").value = meta.valorObjetivo;
         document.getElementById("valorAtual").value = meta.valorAtual;
@@ -115,7 +124,7 @@ async function modificarValor(id, tipo) {
     }
 
     try {
-        const response = await fetch(`${API_URL}/${id}`);
+        const response = await fetch(`${API_URL}/${id}.json`);
         if (!response.ok) throw new Error("Meta não encontrada.");
         const meta = await response.json();
 
@@ -126,7 +135,7 @@ async function modificarValor(id, tipo) {
             if (meta.valorAtual < 0) meta.valorAtual = 0;
         }
 
-        const updateResponse = await fetch(`${API_URL}/${id}`, {
+        const updateResponse = await fetch(`${API_URL}/${id}.json`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(meta)
@@ -135,24 +144,21 @@ async function modificarValor(id, tipo) {
         if (!updateResponse.ok) throw new Error("Falha ao atualizar a meta.");
 
         mostrarNotificacao(tipo === 'adicionar' ? "💰 Valor adicionado!" : "🧾 Valor removido!");
-        carregarMetas();
+        await carregarMetas();
     } catch (error) {
         console.error(`Erro em ${tipo}Valor:`, error);
         mostrarNotificacao("❌ Erro ao atualizar o valor.");
     }
 }
 
-// --- FUNÇÕES DE UI E AUXILIARES ---
+
+// --- FUNÇÕES DE UI E AUXILIARES (Nenhuma alteração necessária aqui) ---
 
 function renderizarLinhaMeta(meta) {
     const tr = document.createElement("tr");
     const progresso = calcularProgresso(meta.valorAtual, meta.valorObjetivo);
     const status = definirStatus(meta.valorAtual, meta.valorObjetivo, meta.dataLimite);
-    const restante = meta.valorObjetivo - meta.valorAtual;
-    const textoRestante = restante <= 0 ? "Meta alcançada!" : `Faltam ${formatarMoeda(restante)} para alcançar.`;
-
-    // Adicionamos o atributo data-label em cada <td>
-    // O texto em data-label="" corresponde ao cabeçalho da tabela
+    
     tr.innerHTML = `
         <td data-label="Meta">${meta.nome}</td>
         <td data-label="Valor a alcançar (R$)">${formatarMoeda(meta.valorObjetivo)}</td>
@@ -174,7 +180,7 @@ function renderizarLinhaMeta(meta) {
     corpoTabela.appendChild(tr);
 }
 
-const formatarMoeda = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const formatarMoeda = (valor) => typeof valor === 'number' ? valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'R$ 0,00';
 const formatarData = (data) => new Date(data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 const calcularProgresso = (atual, objetivo) => objetivo > 0 ? Math.min(100, Math.round((atual / objetivo) * 100)) : 100;
 

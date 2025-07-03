@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,40 +65,34 @@
                     <img src="img/imgs-bernardo/logomelhorada.png" alt="logo" id="logo">
                 </a>
             </div>
-
             <ul class="pages" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="pagina-noticias.html">Notícias</a></li>
                 <li><a href="paginaEducacao.html">Educação</a></li>
                 <li><a href="investimentos.html">Investimentos</a></li>
             </ul>
-
             <div class="right-icons">
-                <i class="fas fa-bars" onclick="toggleMenu()"></i>
+                 <i class="fas fa-bars" id="hamburger-icon"></i>
                 <ul class="menu-dropdown" id="menuDropdown">
-                    <li class="menuHide"><a href="index.html">Home</a></li>
-                    <li class="menuHide"><a href="notícias.html">Notícias</a></li>
-                    <li class="menuHide"><a href="paginaEducacao.html">Educação</a></li>
-                    <li class="menuHide"><a href="investimentos.html">Investimentos</a></li>
-                    <li><a href="meta.html">Metas</a></li>
-                    <li id="adminVisivel"><a href="adicao-dados.html">Adicionar notícia</a></li>
+                    <li><a href="metas.html">Metas</a></li>
+                    <li id="adminVisivel" style="display: none;"><a href="adicao-dados.html">Adicionar notícia</a></li>
                     <li><a href="favoritos.html">Favoritos</a></li>
                     <li><a href="gastostabela.html">Gastos</a></li>
                     <li><a href="tutorial.conosco.html">Tutoriais</a></li>
-                    <li><a href="categorias.html">Pesquise Aqui</a></li>
+                    <li><a href="categorias.html">Pesquisa</a></li>
                 </ul>
             </div>
-
-            <div class="usuario-menu" onclick="toggleUserMenu()">
+            <div class="usuario-menu" id="user-menu-icon">
                 <i class="fas fa-user"></i>
                 <ul class="user-dropdown" id="userDropdown">
                     <li id="userMenu"></li>
                     <li><a href="login.html">Login</a></li>
-                    <li><a href="privacidade.html">Privacidade</a></li>
+                    <li><a href="privacidade.html" style="display: none;">Privacidade</a></li>
                 </ul>
             </div>
         </div>
     </header>
+
     <div class="header-line"></div>
     <main>
         <div class="card">
@@ -113,6 +106,13 @@
             style="display: none; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; width: fit-content; margin-left: auto; margin-right: auto;">
             Mensagem enviada com sucesso!
         </div>
+
+        <section class="messages-container">
+            <h2>Mensagens Recebidas</h2>
+            <div id="messages-list">
+                </div>
+        </section>
+
         <section class="faq-section">
             <h2>Perguntas Frequentes Sobre o Uso do Site</h2>
             <div class="faq-container">
@@ -121,8 +121,7 @@
                         <h3>Como faço para pesquisar uma notícia específica? <span class="arrow">▼</span></h3>
                     </div>
                     <div class="faq-answer">
-                        <p>Para pesquisar por notícias, clique no <strong>menu</strong> (ícone com três linhas no canto
-                            superior direito) e selecione a opção <strong>"Pesquisa"</strong>.</p>
+                        <p>No menu (ícone com três linhas), selecione a opção <strong>"Pesquisa"</strong> para encontrar todos os conteúdos.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -130,9 +129,7 @@
                         <h3>Como faço para conferir os meus dados no site? <span class="arrow">▼</span></h3>
                     </div>
                     <div class="faq-answer">
-                        <p>Acesse sua conta clicando no <strong>ícone de perfil</strong> no canto superior direito.
-                            Dentro da sua área de usuário, navegue até a opção <strong>"Privacidade"</strong> para
-                            conferir seus dados.</p>
+                        <p>Acesse sua conta clicando no <strong>ícone de perfil</strong> no canto superior direito e selecione a opção <strong>"Privacidade"</strong>.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -140,9 +137,7 @@
                         <h3>Como posso ver ou adicionar meus gastos? <span class="arrow">▼</span></h3>
                     </div>
                     <div class="faq-answer">
-                        <p>Clique no <strong>menu</strong> (ícone com três linhas no canto superior direito) para abrir
-                            as opções. Em seguida, selecione <strong>"Gastos"</strong> para visualizar ou adicionar
-                            novas despesas.</p>
+                        <p>Clique no <strong>menu</strong> (ícone com três linhas), e selecione <strong>"Gastos"</strong> para visualizar ou adicionar novas despesas.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -150,8 +145,7 @@
                         <h3>Como posso adicionar minhas metas? <span class="arrow">▼</span></h3>
                     </div>
                     <div class="faq-answer">
-                        <p>Para adicionar suas metas, abra o <strong>menu</strong> (ícone com três linhas no canto
-                            superior direito) e clique na opção <strong>"Metas"</strong>.</p>
+                        <p>Para adicionar suas metas, abra o <strong>menu</strong> (ícone com três linhas) e clique na opção <strong>"Metas"</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -170,94 +164,103 @@
             </div>
         </div>
     </footer>
+    
     <script src="js/user.js"></script>
+    
     <script>
-    const FIREBASE_MESSAGES_URL = 'https://dbgestao-1208c-default-rtdb.firebaseio.com/messages.json';
+        document.addEventListener('DOMContentLoaded', () => {
 
-    function firebaseObjectToArray(data) {
-        return data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
-    }
+            const FIREBASE_MESSAGES_URL = 'https://dbgestao-1208c-default-rtdb.firebaseio.com/messages.json';
 
-    function loadMessages() {
-        const messagesListDiv = document.getElementById('messages-list');
-        if (!messagesListDiv) return;
+            function firebaseObjectToArray(data) {
+                return data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
+            }
 
-        fetch(FIREBASE_MESSAGES_URL)
-            .then(response => response.json())
-            .then(data => {
-                messagesListDiv.innerHTML = '';
-                const messages = firebaseObjectToArray(data);
+            async function loadMessages() {
+                const messagesListDiv = document.getElementById('messages-list');
+                if (!messagesListDiv) return;
 
-                if (messages.length === 0) {
-                    messagesListDiv.innerHTML = '<p>Nenhuma mensagem recebida ainda.</p>';
-                    return;
+                try {
+                    const response = await fetch(FIREBASE_MESSAGES_URL);
+                    if (!response.ok) throw new Error("Erro ao buscar mensagens.");
+                    
+                    const data = await response.json();
+                    const messages = firebaseObjectToArray(data);
+
+                    messagesListDiv.innerHTML = '';
+                    if (messages.length === 0) {
+                        messagesListDiv.innerHTML = '<p>Nenhuma mensagem recebida ainda.</p>';
+                        return;
+                    }
+                    
+                    messages.sort((a, b) => new Date(b.receivedAt) - new Date(a.receivedAt));
+
+                    messages.forEach(msg => {
+                        messagesListDiv.innerHTML += `
+                            <div class="message-item">
+                                <p><strong>${msg.author || 'Anônimo'}:</strong> ${msg.text}</p>
+                                <div class="timestamp">${new Date(msg.receivedAt).toLocaleString('pt-BR')}</div>
+                            </div>
+                        `;
+                    });
+                } catch (error) {
+                    console.error('Erro ao carregar mensagens:', error);
+                    messagesListDiv.innerHTML = '<p style="color: red;">Não foi possível carregar as mensagens.</p>';
                 }
-                
-                messages.sort((a, b) => new Date(b.receivedAt) - new Date(a.receivedAt));
+            }
 
-                messages.forEach(msg => {
-                    const messageElement = document.createElement('div');
-                    messageElement.className = 'message-item';
-                    messageElement.innerHTML = `
-                        <p><strong>${msg.author || 'Anônimo'}:</strong> ${msg.text}</p>
-                        <div class="timestamp">${new Date(msg.receivedAt).toLocaleString('pt-BR')}</div>
-                    `;
-                    messagesListDiv.appendChild(messageElement);
+            const sendMessageBtn = document.getElementById('send-message-btn');
+            const messageInput = document.getElementById('message-input');
+            const successMessageDiv = document.getElementById('success-message');
+
+            if (sendMessageBtn) {
+                sendMessageBtn.addEventListener('click', async () => {
+                    const messageText = messageInput.value.trim();
+                    if (messageText === '') return alert("Por favor, digite sua mensagem.");
+
+                    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+                    const nomeDoAutor = usuarioLogado ? usuarioLogado.nome : "Anônimo";
+
+                    sendMessageBtn.disabled = true;
+                    sendMessageBtn.textContent = 'Enviando...';
+
+                    const newMessage = {
+                        text: messageText,
+                        author: nomeDoAutor,
+                        receivedAt: new Date().toISOString()
+                    };
+
+                    try {
+                        const response = await fetch(FIREBASE_MESSAGES_URL, {
+                            method: 'POST',
+                            body: JSON.stringify(newMessage)
+                        });
+                        if (!response.ok) throw new Error('Erro ao enviar mensagem');
+                        
+                        messageInput.value = '';
+                        successMessageDiv.style.display = 'block';
+                        loadMessages(); // Atualiza a lista na tela
+                        setTimeout(() => successMessageDiv.style.display = 'none', 3000);
+
+                    } catch(err) {
+                        console.error(err);
+                        alert("Ocorreu um erro ao enviar sua mensagem.");
+                    } finally {
+                        sendMessageBtn.disabled = false;
+                        sendMessageBtn.textContent = 'Enviar mensagem';
+                    }
                 });
-            })
-            .catch(error => console.error('Erro ao carregar mensagens:', error));
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const sendMessageBtn = document.getElementById('send-message-btn');
-        const messageInput = document.getElementById('message-input');
-        const successMessageDiv = document.getElementById('success-message');
-
-        if (sendMessageBtn) {
-            sendMessageBtn.addEventListener('click', () => {
-                const messageText = messageInput.value.trim();
-                if (messageText === '') return alert("Por favor, digite sua mensagem.");
-
-                const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-                const nomeDoAutor = usuarioLogado ? usuarioLogado.nome : "Anônimo";
-
-                sendMessageBtn.disabled = true;
-                sendMessageBtn.textContent = 'Enviando...';
-
-                const newMessage = {
-                    text: messageText,
-                    author: nomeDoAutor,
-                    receivedAt: new Date().toISOString()
-                };
-
-                fetch(FIREBASE_MESSAGES_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(newMessage)
-                })
-                .then(res => res.ok ? res.json() : Promise.reject('Erro ao enviar'))
-                .then(() => {
-                    messageInput.value = '';
-                    successMessageDiv.style.display = 'block';
-                    loadMessages();
-                    setTimeout(() => successMessageDiv.style.display = 'none', 3000);
-                })
-                .catch(err => console.error(err))
-                .finally(() => {
-                    sendMessageBtn.disabled = false;
-                    sendMessageBtn.textContent = 'Enviar mensagem';
+            }
+            
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', () => {
+                    item.closest('.faq-item').classList.toggle('active');
                 });
             });
-        }
-        
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                item.closest('.faq-item').classList.toggle('active');
-            });
+
+            // Carrega as mensagens existentes assim que a página abre
+            loadMessages();
         });
-
-        loadMessages();
-    });
-</script>
+    </script>
 </body>
-
 </html>

@@ -1,98 +1,118 @@
+
 document.addEventListener('DOMContentLoaded', async () => {
-  const container = document.getElementById('favoritos-container');
-  const categorias = ['noticias', 'educacao', 'investimento'];
 
-  if (!container) return;
+    // --- CONFIGURAÇÕES E FUNÇÕES GLOBAIS ---
+    const FIREBASE_URL = 'https://dbgestao-1208c-default-rtdb.firebaseio.com';
+    const container = document.getElementById('favoritos-container');
 
-  try {
-    let favoritosTotais = [];
-
-    for (const categoria of categorias) {
-      const response = await fetch(`http://localhost:3000/${categoria}`);
-      if (!response.ok) throw new Error(`Erro ao buscar ${categoria}`);
-      const dados = await response.json();
-
-      const favoritos = dados
-        .filter(item => item.favoritado)
-        .map(item => ({ ...item, categoria }));
-
-      favoritosTotais = favoritosTotais.concat(favoritos);
+    // Função auxiliar para converter a resposta do Firebase em uma lista
+    function firebaseObjectToArray(data) {
+        return data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
     }
 
-    if (favoritosTotais.length === 0) {
-      container.innerHTML = '<p>Você ainda não favoritou nenhum conteúdo.</p>';
-      return;
+    // --- FUNÇÕES DA PÁGINA ---
+
+    // Função para buscar e exibir todos os itens favoritados
+    async function carregarFavoritos() {
+        if (!container) return;
+        container.innerHTML = '<p>Buscando seus favoritos...</p>';
+
+        try {
+            const categorias = ['noticias', 'educacao', 'investimento'];
+            let favoritosTotais = [];
+
+            // Cria uma lista de "promessas" de fetch para buscar tudo em paralelo
+            const requests = categorias.map(cat => 
+                fetch(`${FIREBASE_URL}/${cat}.json`).then(res => res.json())
+            );
+
+            // Espera todas as buscas terminarem
+            const resultados = await Promise.all(requests);
+
+            // Processa os resultados de cada categoria
+            resultados.forEach((data, index) => {
+                const categoria = categorias[index];
+                const listaCompleta = firebaseObjectToArray(data);
+                
+                const favoritosDaCategoria = listaCompleta
+                    .filter(item => item.favoritado === true) // Pega apenas os favoritados
+                    .map(item => ({ ...item, categoria })); // Adiciona a categoria a cada item
+
+                favoritosTotais.push(...favoritosDaCategoria); // Junta tudo em uma única lista
+            });
+
+            // Ordena por data, se disponível
+            favoritosTotais.sort((a, b) => new Date(b.data) - new Date(a.data));
+            
+            renderizarFavoritos(favoritosTotais);
+
+        } catch (error) {
+            console.error("Erro ao carregar favoritos:", error);
+            container.innerHTML = '<p style="color: red;">Não foi possível carregar seus favoritos.</p>';
+        }
     }
 
-    favoritosTotais.forEach(item => {
-      const caminhoImagem = item.banner || item.imagem;
+    // Função para "desenhar" os cards na tela
+    function renderizarFavoritos(favoritos) {
+        container.innerHTML = '';
 
-      const card = document.createElement('div');
-      card.className = 'card-noticia favorito-card';
-      card.style.position = 'relative';
+        if (favoritos.length === 0) {
+            container.innerHTML = '<p>Você ainda não favoritou nenhum conteúdo.</p>';
+            return;
+        }
 
-      card.innerHTML = `
-        <img src="${caminhoImagem}" alt="${item.titulo}">
-        <h3>${item.titulo}</h3>
-        <p>${item.resumo}</p>
-        <p class="categoria-label">Categoria: ${item.categoria}</p>
-        <i class="fa-solid fa-heart favorite-icon favorito" data-id="${item.id}" data-categoria="${item.categoria}"></i>
-      `;
+        favoritos.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card-noticia favorito-card'; // Use suas classes CSS
+            card.style.position = 'relative';
 
-      // Ações de clique
-      card.querySelector('img').addEventListener('click', () => abrirModal(item));
-      card.querySelector('h3').addEventListener('click', () => abrirModal(item));
-      card.querySelector('p').addEventListener('click', () => abrirModal(item));
+            card.innerHTML = `
+                <a href="detalhes${item.categoria}.html?id=${item.id}" class="card-link">
+                    <img src="${item.imagem}" alt="${item.titulo}">
+                    <h3>${item.titulo}</h3>
+                    <p>${item.resumo}</p>
+                    <p class="categoria-label">Categoria: ${item.categoria}</p>
+                </a>
+                <i class="fas fa-heart favorite-icon favorito" data-id="${item.id}" data-categoria="${item.categoria}"></i>
+            `;
+            
+            // Adiciona o listener de clique para desfavoritar
+            const icon = card.querySelector('.favorite-icon');
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation(); // Impede que o clique no coração ative o link do card
+                toggleFavorito(item.id, item.categoria, card);
+            });
 
-      const icon = card.querySelector('.favorite-icon');
-      icon.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleFavorito(item.id, item.categoria, icon, card);
-      });
-
-      container.appendChild(card);
-    });
-
-    function abrirModal(item) {
-      document.getElementById('modal-titulo').textContent = item.titulo;
-      document.getElementById('modal-imagem').src = item.banner || item.imagem;
-      document.getElementById('modal-conteudo').innerHTML = item.texto || item.conteudo;
-      document.getElementById('modal').style.display = 'block';
+            container.appendChild(card);
+        });
     }
 
-    const closeBtn = document.getElementById('close-modal');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        document.getElementById('modal').style.display = 'none';
-      });
+    // Função para desfavoritar um item
+    async function toggleFavorito(id, categoria, cardElement) {
+        const url = `${FIREBASE_URL}/${categoria}/${id}.json`;
+        
+        try {
+            // No Firebase, para desfavoritar, simplesmente atualizamos o campo para 'false'
+            await fetch(url, {
+                method: "PATCH", // PATCH atualiza apenas o campo especificado
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ favoritado: false })
+            });
+
+            // Remove o card da tela imediatamente, como na sua lógica original
+            cardElement.remove();
+
+            // Verifica se a lista de favoritos ficou vazia
+            if (container.children.length === 0) {
+                 container.innerHTML = '<p>Você não tem mais nenhum conteúdo favoritado.</p>';
+            }
+
+        } catch(error) {
+            console.error("Erro ao desfavoritar:", error);
+            alert("Não foi possível remover dos favoritos.");
+        }
     }
 
-    async function toggleFavorito(id, categoria, icon, card) {
-      const url = `http://localhost:3000/${categoria}/${id}`;
-      const res = await fetch(url);
-      const item = await res.json();
-      const novoStatus = !item.favoritado;
-
-      await fetch(url, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ favoritado: novoStatus })
-      });
-
-      // Remove se desfavoritar
-      if (!novoStatus) {
-        card.remove();
-      }
-
-      // Atualiza visual
-      icon.classList.toggle("fa-solid", novoStatus);
-      icon.classList.toggle("fa-regular", !novoStatus);
-      icon.classList.toggle("favorito", novoStatus);
-    }
-
-  } catch (error) {
-    console.error("Erro ao carregar favoritos:", error);
-  }
+    // --- INICIA TUDO ---
+    carregarFavoritos();
 });
